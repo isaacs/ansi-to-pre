@@ -1,0 +1,153 @@
+$ node --test
+[32m✔ add [90m(0.569917ms)[39m[39m
+[32m✔ stringOrNull [90m(0.063833ms)[39m[39m
+▶ suite of tests that fail
+  [31m✖ uhoh, this one throws [90m(0.910959ms)[39m[39m
+    RangeError [Error]: Invalid time value
+        at Date.toISOString (<anonymous>)
+        at thrower [90m(file:///Users/isaacs/dev/tapjs/node-test-example/[39mlib/index.mjs:11:43[90m)[39m
+        at TestContext.<anonymous> [90m(file:///Users/isaacs/dev/tapjs/node-test-example/[39mtest/node.test.js:26:18[90m)[39m
+    [90m    at Test.runInAsyncScope (node:async_hooks:206:9)[39m
+    [90m    at Test.run (node:internal/test_runner/test:631:25)[39m
+    [90m    at Test.start (node:internal/test_runner/test:542:17)[39m
+    [90m    at TestContext.test (node:internal/test_runner/test:167:20)[39m
+        at TestContext.<anonymous> [90m(file:///Users/isaacs/dev/tapjs/node-test-example/[39mtest/node.test.js:23:11[90m)[39m
+    [90m    at Test.runInAsyncScope (node:async_hooks:206:9)[39m
+    [90m    at Test.run (node:internal/test_runner/test:631:25)[39m
+
+  [31m✖ failer [90m(0.532708ms)[39m[39m
+    AssertionError [ERR_ASSERTION]: '11' == '2'
+        at TestContext.<anonymous> [90m(file:///Users/isaacs/dev/tapjs/node-test-example/[39mtest/node.test.js:33:12[90m)[39m
+    [90m    at Test.runInAsyncScope (node:async_hooks:206:9)[39m
+    [90m    at Test.run (node:internal/test_runner/test:631:25)[39m
+    [90m    at Test.start (node:internal/test_runner/test:542:17)[39m
+    [90m    at TestContext.test (node:internal/test_runner/test:167:20)[39m
+        at TestContext.<anonymous> [90m(file:///Users/isaacs/dev/tapjs/node-test-example/[39mtest/node.test.js:29:11[90m)[39m
+    [90m    at async Test.run (node:internal/test_runner/test:632:9)[39m
+    [90m    at async Test.processPendingSubtests (node:internal/test_runner/test:374:7)[39m {
+      generatedMessage: [33mtrue[39m,
+      code: [32m'ERR_ASSERTION'[39m,
+      actual: [32m'11'[39m,
+      expected: [32m'2'[39m,
+      operator: [32m'=='[39m
+    }
+
+[31m▶ [39msuite of tests that fail [90m(1.684292ms)[39m
+
+[32m✔ add [90m(1.774ms)[39m[39m
+[32m✔ stringOrNull [90m(1.091ms)[39m[39m
+▶ suite of tests that fail
+  [31m✖ uhoh, this one throws [90m(10.016ms)[39m[39m
+    Error: Invalid time value
+    | // This is a function that throws, to show how both
+    | // handle errors.
+    | export const thrower = (n) => new Date(n).toISOString()
+    | ------------------------------------------^
+    | 
+    | // one that fails, to show how failures are handled
+        at Date.toISOString (<anonymous>)
+        at thrower [90m(/Users/isaacs/dev/tapjs/node-test-example/[39mlib/index.mjs:11:43[90m)[39m
+        at Test.<anonymous> [90m(/Users/isaacs/dev/tapjs/node-test-example/[39mtest/tap.test.js:27:13[90m)[39m {
+      type: [32m'RangeError'[39m,
+      tapCaught: [32m'testFunctionThrow'[39m
+    }
+
+  [31m✖ failer [90m(3.676ms)[39m[39m
+    Error: should be equal
+    [48;2;172;62;163m[38;2;255;229;241m--- expected                                                               [39m[49m[m
+    [48;2;58;117;0m[38;2;242;255;229m+++ actual                                                                 [39m[49m[m
+    [48;2;34;34;34m[38;2;117;158;239m@@ -1,1 +1,1 @@                                                            [39m[49m[m
+    [48;2;172;62;163m[38;2;255;229;241m-2                                                                         [39m[49m[m
+    [48;2;58;117;0m[38;2;242;255;229m+11                                                                        [39m[49m[m
+    |     t.equal(failer(-1), '0')
+    |     // expect to convert string numbers to Number, but doesn't
+    |     t.equal(failer('1'), '2')
+    | ------^
+    |     // expect to convert non-numerics to 0, but it doesn't
+    |     t.equal(failer({}), '1')
+        at Test.<anonymous> [90m(/Users/isaacs/dev/tapjs/node-test-example/[39mtest/tap.test.js:35:7[90m)[39m
+        at Test.<anonymous> [90m(/Users/isaacs/dev/tapjs/node-test-example/[39mtest/tap.test.js:31:5[90m)[39m
+        at [90m/Users/isaacs/dev/tapjs/node-test-example/[39mtest/tap.test.js:23:3 {
+      compare: [32m'==='[39m
+    }
+
+[31m▶ [39msuite of tests that fail [90m(17.681ms)[39m
+
+[34mℹ tests 9[39m
+[34mℹ suites 1[39m
+[34mℹ pass 4[39m
+[34mℹ fail 5[39m
+[34mℹ cancelled 0[39m
+[34mℹ skipped 0[39m
+[34mℹ todo 0[39m
+[34mℹ duration_ms 160.809375[39m
+
+[31m✖ failing tests:[39m
+
+test at file:/Users/isaacs/dev/tapjs/node-test-example/test/node.test.js:23:11
+[31m✖ uhoh, this one throws [90m(0.910959ms)[39m[39m
+  RangeError [Error]: Invalid time value
+      at Date.toISOString (<anonymous>)
+      at thrower [90m(file:///Users/isaacs/dev/tapjs/node-test-example/[39mlib/index.mjs:11:43[90m)[39m
+      at TestContext.<anonymous> [90m(file:///Users/isaacs/dev/tapjs/node-test-example/[39mtest/node.test.js:26:18[90m)[39m
+  [90m    at Test.runInAsyncScope (node:async_hooks:206:9)[39m
+  [90m    at Test.run (node:internal/test_runner/test:631:25)[39m
+  [90m    at Test.start (node:internal/test_runner/test:542:17)[39m
+  [90m    at TestContext.test (node:internal/test_runner/test:167:20)[39m
+      at TestContext.<anonymous> [90m(file:///Users/isaacs/dev/tapjs/node-test-example/[39mtest/node.test.js:23:11[90m)[39m
+  [90m    at Test.runInAsyncScope (node:async_hooks:206:9)[39m
+  [90m    at Test.run (node:internal/test_runner/test:631:25)[39m
+
+test at file:/Users/isaacs/dev/tapjs/node-test-example/test/node.test.js:29:11
+[31m✖ failer [90m(0.532708ms)[39m[39m
+  AssertionError [ERR_ASSERTION]: '11' == '2'
+      at TestContext.<anonymous> [90m(file:///Users/isaacs/dev/tapjs/node-test-example/[39mtest/node.test.js:33:12[90m)[39m
+  [90m    at Test.runInAsyncScope (node:async_hooks:206:9)[39m
+  [90m    at Test.run (node:internal/test_runner/test:631:25)[39m
+  [90m    at Test.start (node:internal/test_runner/test:542:17)[39m
+  [90m    at TestContext.test (node:internal/test_runner/test:167:20)[39m
+      at TestContext.<anonymous> [90m(file:///Users/isaacs/dev/tapjs/node-test-example/[39mtest/node.test.js:29:11[90m)[39m
+  [90m    at async Test.run (node:internal/test_runner/test:632:9)[39m
+  [90m    at async Test.processPendingSubtests (node:internal/test_runner/test:374:7)[39m {
+    generatedMessage: [33mtrue[39m,
+    code: [32m'ERR_ASSERTION'[39m,
+    actual: [32m'11'[39m,
+    expected: [32m'2'[39m,
+    operator: [32m'=='[39m
+  }
+
+test at test/tap.test.js:24:5
+[31m✖ uhoh, this one throws [90m(10.016ms)[39m[39m
+  Error: Invalid time value
+  | // This is a function that throws, to show how both
+  | // handle errors.
+  | export const thrower = (n) => new Date(n).toISOString()
+  | ------------------------------------------^
+  | 
+  | // one that fails, to show how failures are handled
+      at Date.toISOString (<anonymous>)
+      at thrower [90m(/Users/isaacs/dev/tapjs/node-test-example/[39mlib/index.mjs:11:43[90m)[39m
+      at Test.<anonymous> [90m(/Users/isaacs/dev/tapjs/node-test-example/[39mtest/tap.test.js:27:13[90m)[39m {
+    type: [32m'RangeError'[39m,
+    tapCaught: [32m'testFunctionThrow'[39m
+  }
+
+test at test/tap.test.js:31:5
+[31m✖ failer [90m(3.676ms)[39m[39m
+  Error: should be equal
+  [48;2;172;62;163m[38;2;255;229;241m--- expected                                                               [39m[49m[m
+  [48;2;58;117;0m[38;2;242;255;229m+++ actual                                                                 [39m[49m[m
+  [48;2;34;34;34m[38;2;117;158;239m@@ -1,1 +1,1 @@                                                            [39m[49m[m
+  [48;2;172;62;163m[38;2;255;229;241m-2                                                                         [39m[49m[m
+  [48;2;58;117;0m[38;2;242;255;229m+11                                                                        [39m[49m[m
+  |     t.equal(failer(-1), '0')
+  |     // expect to convert string numbers to Number, but doesn't
+  |     t.equal(failer('1'), '2')
+  | ------^
+  |     // expect to convert non-numerics to 0, but it doesn't
+  |     t.equal(failer({}), '1')
+      at Test.<anonymous> [90m(/Users/isaacs/dev/tapjs/node-test-example/[39mtest/tap.test.js:35:7[90m)[39m
+      at Test.<anonymous> [90m(/Users/isaacs/dev/tapjs/node-test-example/[39mtest/tap.test.js:31:5[90m)[39m
+      at [90m/Users/isaacs/dev/tapjs/node-test-example/[39mtest/tap.test.js:23:3 {
+    compare: [32m'==='[39m
+  }
