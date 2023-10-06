@@ -38,10 +38,10 @@ export class Block {
     return !this.#text
       ? ''
       : ansi
-      ? (this.#style?.ansi || '\x1b[0m') + this.#text
+      ? (this.#style ?? Style.RESET).ansi + this.#text
       : this.#style
-      ? `<span style="${this.#style}">${fixEmoji(this.#text)}</span>`
-      : this.#text
+      ? fixEmoji(this.#style.wrap(this.#text))
+      : fixEmoji(this.#text)
   }
 
   /** append text to the block */

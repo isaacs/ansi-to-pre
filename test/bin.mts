@@ -97,10 +97,10 @@ t.test('bin tests', async t => {
   t.test('ansi in, ansi out', async t => {
     const input = '\x1b[41mred red red red red\x1b[44mblue\x1b[10Dblue'
     const expect =
-      '\x1b[0;48;2;255;0;0mred red red r' +
-      '\x1b[0;48;2;0;64;224mblue' +
-      '\x1b[0;48;2;255;0;0med' +
-      '\x1b[0;48;2;0;64;224mblue' +
+      '\x1b]8;;\x1b\\\x1b[0;48;2;255;0;0mred red red r' +
+      '\x1b]8;;\x1b\\\x1b[0;48;2;0;64;224mblue' +
+      '\x1b]8;;\x1b\\\x1b[0;48;2;255;0;0med' +
+      '\x1b]8;;\x1b\\\x1b[0;48;2;0;64;224mblue' +
       '\x1b[m'
 
     const stdin = new Minipass()
@@ -122,10 +122,10 @@ t.test('bin tests', async t => {
     const output = new Minipass<string>({ encoding: 'utf8' })
 
     const expect =
-      '\x1b[0;48;2;255;0;0mred red red r' +
-      '\x1b[0;48;2;0;64;224mblue' +
-      '\x1b[0;48;2;255;0;0med' +
-      '\x1b[0;48;2;0;64;224mblue' +
+      '\x1b]8;;\x1b\\\x1b[0;48;2;255;0;0mred red red r' +
+      '\x1b]8;;\x1b\\\x1b[0;48;2;0;64;224mblue' +
+      '\x1b]8;;\x1b\\\x1b[0;48;2;255;0;0med' +
+      '\x1b]8;;\x1b\\\x1b[0;48;2;0;64;224mblue' +
       '\x1b[m'
 
     t.intercept(process, 'argv', {

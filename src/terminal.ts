@@ -3,8 +3,11 @@ import { Block } from './block.js'
 import { DEFAULT_BG, DEFAULT_FG } from './default-colors.js'
 import { Style, StyleProps } from './style.js'
 const CODES_RE =
-  /\u001b\[([0-9]*[A-GJKST]|([0-9;]*)m|([0-9]*;?[0-9]*)?H|\?[0-9]+[hl])/
-const TITLE_RE = /\u001b\]0;.*?\u0007/g
+  /^\u001b\[([0-9]*[A-GJKSTg]|([0-9;]*)m|([0-9]*;?[0-9]*)?[Hf]|\?[0-9]+[hl])/
+
+const OSC_RE = /^\u001b\](.*?)(?:\u0007|\u001b\\)/
+const OSC_TITLE = '0;'
+const OSC_HREF = '8;;'
 
 /**
  * A representation of a virtual "terminal" where we write out the character
@@ -53,6 +56,7 @@ export class Terminal {
   // the current style we use to paint characters to our "screen"
   #brush: Style = new Style({})
 
+  #title: string = ''
   #blocks?: Block[]
 
   constructor(input?: string) {
@@ -249,95 +253,139 @@ export class Terminal {
   write(input: string): Terminal {
     this.#blocks = undefined
     // remove title-setting sequences
-    input = input.replace(TITLE_RE, '')
     for (let c = 0; c < input.length; ) {
       while (input.charAt(c) === '\x1b') {
+        if (input.charAt(c + 1) === 'B') {
+          c += 2
+          this.horizontalPosition(1)
+          continue
+        }
+
+        if (input.charAt(c + 1) === 'H') {
+          // sets tab stops, but these aren't supported presently, so ignore
+          c += 2
+          continue
+        }
+
+        if (input.charAt(c + 1) === 'D') {
+          this.scrollDown(1)
+          continue
+        }
+        if (input.charAt(c + 1) === 'M') {
+          this.scrollUp(1)
+          continue
+        }
+
+        // cursor/screen motion/erase commands
         const code = input.substring(c).match(CODES_RE) as
           | null
           | (RegExpMatchArray & [string, string])
-        if (code?.index !== 0) break
-        c += code[0].length
-        if (code[1].endsWith('m')) {
-          // style code
-          this.setStyle(code[0])
+        if (code) {
+          c += code[0].length
+          if (code[1].endsWith('m')) {
+            // style code
+            this.setStyle(code[0])
+            continue
+          } else {
+            const x = code[1].charAt(code[1].length - 1)
+            if (x === 'H' || x === 'f') {
+              // cursor position
+              const [n, m] = code[1].replace(/[Hf]$/, '').split(';')
+              const row = Math.max(1, parseInt(n || '1', 10))
+              const col = Math.max(1, parseInt(m || '1', 10))
+              this.position(row, col)
+              continue
+            }
+            // these all have an optional 1-indexed parameter
+            // that defaults to 1, except J and K which default to 0
+            const p = code[1].match(/^([0-9]+)/)?.[1]
+            const n = parseInt(p || '1', 10)
+            const z = parseInt(p || '0', 10)
+            switch (x) {
+              case 'A':
+                this.up(n)
+                continue
+              case 'T':
+                this.scrollUp(n)
+                continue
+              case 'B':
+                this.down(n)
+                continue
+              case 'S':
+                this.scrollDown(n)
+                continue
+              case 'C':
+                this.forward(n)
+                continue
+              case 'D':
+                this.back(n)
+                continue
+              case 'E':
+                this.nextLine(n)
+                continue
+              case 'F':
+                this.prevLine(n)
+                continue
+              case 'G':
+                this.horizontalPosition(n)
+                continue
+              case 'J': {
+                switch (z) {
+                  case 0:
+                    this.eraseScreenToEnd()
+                    continue
+                  case 1:
+                    this.eraseScreenFromStart()
+                    continue
+                  case 2:
+                  case 3:
+                    this.eraseScreen()
+                    continue
+                }
+                continue
+              }
+              case 'K': {
+                switch (z) {
+                  case 0:
+                    this.eraseLineToEnd()
+                    continue
+                  case 1:
+                    this.eraseLineFromStart()
+                    continue
+                  case 2:
+                    this.eraseLine()
+                    continue
+                }
+                continue
+              }
+            }
+          }
           continue
-        } else {
-          const x = code[1].charAt(code[1].length - 1)
-          if (x === 'H') {
-            // cursor position
-            const [n, m] = code[1].replace(/H$/, '').split(';')
-            const row = Math.max(1, parseInt(n || '1', 10))
-            const col = Math.max(1, parseInt(m || '1', 10))
-            this.position(row, col)
+        }
+
+        // check for OSC (title and hyperlinks)
+        const osc = input.substring(c).match(OSC_RE) as
+          | null
+          | (RegExpMatchArray & [string, string])
+        if (osc?.index === 0) {
+          c += osc[0].length
+          const cmd = osc[1]
+          if (cmd.startsWith(OSC_TITLE)) {
+            this.setTitle(cmd.substring(OSC_TITLE.length))
             continue
           }
-          // these all have an optional 1-indexed parameter
-          // that defaults to 1, except J and K which default to 0
-          const p = code[1].match(/^([0-9]+)/)?.[1]
-          const n = parseInt(p || '1', 10)
-          const z = parseInt(p || '0', 10)
-          switch (x) {
-            case 'A':
-              this.up(n)
-              continue
-            case 'T':
-              this.scrollUp(n)
-              continue
-            case 'B':
-              this.down(n)
-              continue
-            case 'S':
-              this.scrollDown(n)
-              continue
-            case 'C':
-              this.forward(n)
-              continue
-            case 'D':
-              this.back(n)
-              continue
-            case 'E':
-              this.nextLine(n)
-              continue
-            case 'F':
-              this.prevLine(n)
-              continue
-            case 'G':
-              this.horizontalPosition(n)
-              continue
-            case 'J': {
-              switch (z) {
-                case 0:
-                  this.eraseScreenToEnd()
-                  continue
-                case 1:
-                  this.eraseScreenFromStart()
-                  continue
-                case 2:
-                case 3:
-                  this.eraseScreen()
-                  continue
-              }
-              continue
-            }
-            case 'K': {
-              switch (z) {
-                case 0:
-                  this.eraseLineToEnd()
-                  continue
-                case 1:
-                  this.eraseLineFromStart()
-                  continue
-                case 2:
-                  this.eraseLine()
-                  continue
-              }
-              continue
-            }
+          if (cmd.startsWith(OSC_HREF)) {
+            this.setStyle({ href: cmd.substring(OSC_HREF.length) })
+            continue
           }
+          continue
         }
+
+        // some other code we don't support, treat as text
+        break
       }
+
       // end parsing ansi codes, might have walked off the input
-      // or deleted the section where the cursor points.
       if (c >= input.length) break
 
       const ch = input.charAt(c++)
@@ -373,6 +421,11 @@ export class Terminal {
       this.#text[this.#cursor[0]] = line
       this.forward(1)
     }
+    return this
+  }
+
+  setTitle(s: string) {
+    this.#title = s
     return this
   }
 
@@ -440,8 +493,19 @@ export class Terminal {
     const contents = this.blocks
       .map(b => (ansi ? b.ansi : b.toString()))
       .join('')
-    if (ansi) return contents + '\x1b[m'
-    const preStyle = `style="color:${DEFAULT_FG};background:${DEFAULT_BG};position:relative"`
-    return `<pre ${preStyle}>${contents}</pre>`
+    if (ansi) {
+      const title = this.#title ? `\x1b]0;${this.#title}\x1b\\` : ''
+      return title + contents + '\x1b[m'
+    }
+    const css = Object.entries({
+      color: DEFAULT_FG,
+      background: DEFAULT_BG,
+      position: 'relative',
+    })
+      .map(kv => kv.join(':'))
+      .join(';')
+    const preStyle = `style="${css}"`
+    const preTitle = this.#title ? ` title="${this.#title}"` : ''
+    return `<pre ${preStyle}${preTitle}>${contents}</pre>`
   }
 }

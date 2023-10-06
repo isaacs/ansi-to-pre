@@ -4,6 +4,7 @@
 import { DEFAULT_BG, DEFAULT_FG } from './default-colors.js'
 import { dimColor } from './dim-color.js'
 import { hexToRgb } from './hex-to-rgb.js'
+import {htmlEscape} from './html-escape.js'
 import { namedBright, namedCodes, names } from './named.js'
 import { rgbToHex } from './rgb-to-hex.js'
 import { xtermCodes } from './xterm.js'
@@ -38,6 +39,28 @@ const NAMED_BG = '4'
 const NAMED_FG_BRIGHT = '9'
 const NAMED_BG_BRIGHT = '10'
 
+// verifies that the style code is something that a Style object can handle,
+// and captures the first code and its parameter.
+// first code: $1
+// href: $2
+// styles: $3
+const VALID_CODE = () =>
+  new RegExp(
+    '\x1b\\]8;;' + // OSC hyperlink
+      '(.*?)' + // href
+      '(?:\x1b|\x07)' + // ST
+      '|' +
+      '\x1b\\[' + // style codes
+      '([0-9]*(?:;[0-9]*)*)' + // code numbers
+      'm', // end style codes
+    'g'
+  )
+
+type ParsedValidCode =
+  | null
+  | (RegExpExecArray &
+      ([string, string, undefined] | [string, undefined, string]))
+
 /**
  * The properties that can be set on Style objects
  */
@@ -51,9 +74,10 @@ export type StyleProps = {
   overline?: boolean
   strike?: boolean
   underline?: boolean
+  href?: string
 }
 
-const RESET = {
+const RESET_PROPS: StyleProps = {
   background: '',
   bold: false,
   color: '',
@@ -63,10 +87,12 @@ const RESET = {
   overline: false,
   strike: false,
   underline: false,
+  href: '',
 }
 
 const namedColor = (c: string, bright = false): string => {
   if (!c) return c
+  c = c.toLowerCase()
   const code = names[c as keyof typeof names]
   if (typeof code === 'number') {
     return (bright ? namedBright[code] : namedCodes[code]) as string
@@ -110,8 +136,8 @@ export class Style {
   #overline!: boolean
   #strike!: boolean
   #underline!: boolean
-  #isReset!: boolean
   #ansi!: string
+  #href!: string
 
   constructor(styles: StyleProps | string) {
     const {
@@ -124,6 +150,7 @@ export class Style {
       overline = false,
       strike = false,
       underline = false,
+      href = '',
     } = typeof styles !== 'string' ? styles : Style.ansiProperties(styles)
 
     const ansi = Style.propertiesAnsi({
@@ -136,6 +163,7 @@ export class Style {
       overline,
       strike,
       underline,
+      href,
     })
 
     // same style = same object
@@ -144,23 +172,27 @@ export class Style {
     SEEN.set(ansi, this)
 
     this.#ansi = ansi
-    this.#background = namedColor((background ?? '').toLowerCase())
-    this.#bold = bold ?? false
-    this.#color = namedColor((color ?? '').toLowerCase())
-    this.#dim = dim ?? false
-    this.#inverse = inverse ?? false
-    this.#italic = italic ?? false
-    this.#overline = overline ?? false
-    this.#strike = strike ?? false
-    this.#underline = underline ?? false
-    this.#isReset = ansi === '\x1b[0m'
+    this.#background = namedColor(background)
+    this.#bold = bold
+    this.#color = namedColor(color)
+    this.#dim = dim
+    this.#inverse = inverse
+    this.#italic = italic
+    this.#overline = overline
+    this.#strike = strike
+    this.#underline = underline
+    try {
+      this.#href = href && String(new URL(href))
+    } catch {
+      this.#href = ''
+    }
   }
 
   /**
    * True if this style is a full reset of all properties.
    */
   get isReset() {
-    return this.#isReset
+    return this === RESET
   }
 
   /** corresponding `\x1b[...m` ANSI code */
@@ -180,6 +212,7 @@ export class Style {
       overline,
       strike,
       underline,
+      href = '',
     } = styles
     const codes = [
       // always do a reset at the start
@@ -196,129 +229,155 @@ export class Style {
       ...(strike ? [STRIKE_START] : []),
       ...(underline ? [UNDERLINE_START] : []),
     ]
-    return `\x1b[${codes.join(';')}m`
+    return `\x1b]8;;${href}\x1b\\\x1b[${codes.join(';')}m`
+  }
+
+  static validStyleCodes(s: string): null | [string, string][] {
+    let c = 0
+    let m: ParsedValidCode
+    const results: [string, string][] = []
+    const vc = VALID_CODE()
+    while ((m = vc.exec(s) as ParsedValidCode)) {
+      if (c !== m.index) {
+        return null
+      }
+      c += m[0].length
+      results.push([m[0], m[1] ?? m[2]])
+    }
+    return results.length === 0 ? null : results
+  }
+
+  /** a Style object that resets all properties */
+  static get RESET() {
+    return RESET
   }
 
   /** Convert an ANSI style code to a set of properties */
   static ansiProperties(code: string): StyleProps {
-    if (!code.startsWith('\x1b[') || !code.endsWith('m')) {
-      throw new Error('invalid ansi style code: ' + code)
+    const codes = Style.validStyleCodes(code)
+    if (!codes) {
+      throw new Error('invalid ansi style code: ' + JSON.stringify(code))
     }
     const style: StyleProps = {}
-    const codes = code.substring(2, code.length - 1).split(';')
-    for (let i = 0; i < codes.length; i++) {
-      const c = codes[i] as string
-      switch (c) {
-        case '':
-        case ALL_END:
-          Object.assign(style, RESET)
-          continue
-        case BOLD_END:
-          style.bold = false
-          style.dim = false
-          continue
-        case ITALIC_END:
-          style.italic = false
-          continue
-        case STRIKE_END:
-          style.strike = false
-          continue
-        case OVER_END:
-          style.overline = false
-          continue
-        case UNDERLINE_END:
-          style.underline = false
-          continue
-        case INV_END:
-          style.inverse = false
-          continue
-        case FG_END:
-          style.color = ''
-          continue
-        case BG_END:
-          style.background = ''
-          continue
-        case BOLD_START:
-          style.bold = true
-          continue
-        case INV_START:
-          style.inverse = true
-          continue
-        case UNDERLINE_START:
-        case UNDERLINE_START_2:
-          style.underline = true
-          continue
-        case DIM_START:
-          style.dim = true
-          continue
-        case OVER_START:
-          style.overline = true
-          continue
-        case ITALIC_START:
-          style.italic = true
-          continue
-        case STRIKE_START:
-          style.strike = true
-          continue
-        case BG_START:
-        case FG_START: {
-          // 2 for rgb, 5 for xterm
-          const next = codes[i + 1]
-          const prop = c == FG_START ? 'color' : 'background'
-          switch (next) {
-            case '5':
-              const xt = codes[i + 2]
-              const code = xt && xtermCodes[parseInt(xt, 10)]
-              if (code) {
-                i += 2
-                style[prop] = code
-              }
-              continue
-            case '2':
-              const sr = codes[i + 2]
-              const sg = codes[i + 3]
-              const sb = codes[i + 4]
-              if (sr && sg && sb) {
-                const r = parseInt(sr, 10)
-                const g = parseInt(sg, 10)
-                const b = parseInt(sb, 10)
-                const hex = rgbToHex([r, g, b])
-                if (
-                  r <= 255 &&
-                  r >= 0 &&
-                  g <= 255 &&
-                  g >= 0 &&
-                  b <= 255 &&
-                  b >= 0
-                ) {
-                  i += 4
-                  style[prop] = hex
+    for (const code of codes) {
+      if (code[0].startsWith('\x1b]8;;')) {
+        style.href = code[1]
+        continue
+      }
+      const codes = code[1].split(';')
+      for (let i = 0; i < codes.length; i++) {
+        const c = codes[i] as string
+        switch (c) {
+          case '':
+          case ALL_END:
+            Object.assign(style, RESET_PROPS)
+            continue
+          case BOLD_END:
+            style.bold = false
+            style.dim = false
+            continue
+          case ITALIC_END:
+            style.italic = false
+            continue
+          case STRIKE_END:
+            style.strike = false
+            continue
+          case OVER_END:
+            style.overline = false
+            continue
+          case UNDERLINE_END:
+            style.underline = false
+            continue
+          case INV_END:
+            style.inverse = false
+            continue
+          case FG_END:
+            style.color = ''
+            continue
+          case BG_END:
+            style.background = ''
+            continue
+          case BOLD_START:
+            style.bold = true
+            continue
+          case INV_START:
+            style.inverse = true
+            continue
+          case UNDERLINE_START:
+          case UNDERLINE_START_2:
+            style.underline = true
+            continue
+          case DIM_START:
+            style.dim = true
+            continue
+          case OVER_START:
+            style.overline = true
+            continue
+          case ITALIC_START:
+            style.italic = true
+            continue
+          case STRIKE_START:
+            style.strike = true
+            continue
+          case BG_START:
+          case FG_START: {
+            // 2 for rgb, 5 for xterm
+            const next = codes[i + 1]
+            const prop = c == FG_START ? 'color' : 'background'
+            switch (next) {
+              case '5':
+                const xt = codes[i + 2]
+                const code = xt && xtermCodes[parseInt(xt, 10)]
+                if (code) {
+                  i += 2
+                  style[prop] = code
                 }
-              }
+                continue
+              case '2':
+                const sr = codes[i + 2]
+                const sg = codes[i + 3]
+                const sb = codes[i + 4]
+                if (sr && sg && sb) {
+                  const r = parseInt(sr, 10)
+                  const g = parseInt(sg, 10)
+                  const b = parseInt(sb, 10)
+                  const hex = rgbToHex([r, g, b])
+                  if (
+                    r <= 255 &&
+                    r >= 0 &&
+                    g <= 255 &&
+                    g >= 0 &&
+                    b <= 255 &&
+                    b >= 0
+                  ) {
+                    i += 4
+                    style[prop] = hex
+                  }
+                }
+            }
+            continue
           }
-          continue
-        }
-        // named color/bg
-        default: {
-          const m = c.match(NAMED_RE) as
-            | null
-            | (RegExpMatchArray & [string, string, string])
-          if (!m) continue
-          const color = parseInt(m[2], 10)
-          if (!color && color !== 0) continue
-          switch (m[1]) {
-            case NAMED_FG:
-              style.color = namedCodes[color]
-              continue
-            case NAMED_BG:
-              style.background = namedCodes[color]
-              continue
-            case NAMED_FG_BRIGHT:
-              style.color = namedBright[color]
-              continue
-            case NAMED_BG_BRIGHT:
-              style.background = namedBright[color]
-              continue
+          // named color/bg
+          default: {
+            const m = c.match(NAMED_RE) as
+              | null
+              | (RegExpMatchArray & [string, string, string])
+            if (!m) continue
+            const color = parseInt(m[2], 10)
+            switch (m[1]) {
+              case NAMED_FG:
+                style.color = namedCodes[color]
+                continue
+              case NAMED_BG:
+                style.background = namedCodes[color]
+                continue
+              case NAMED_FG_BRIGHT:
+                style.color = namedBright[color]
+                continue
+              case NAMED_BG_BRIGHT:
+                style.background = namedBright[color]
+                continue
+            }
           }
         }
       }
@@ -344,6 +403,7 @@ export class Style {
       overline = this.#overline,
       strike = this.#strike,
       underline = this.#underline,
+      href = this.#href,
     } = typeof properties === 'string'
       ? Style.ansiProperties(properties)
       : properties
@@ -355,7 +415,8 @@ export class Style {
       italic === this.#italic &&
       overline === this.#overline &&
       strike === this.#strike &&
-      underline === this.#underline
+      underline === this.#underline &&
+      href === this.#href
       ? this
       : new Style({
           background,
@@ -367,6 +428,7 @@ export class Style {
           overline,
           strike,
           underline,
+          href,
         })
   }
 
@@ -375,19 +437,33 @@ export class Style {
     { colors }: { colors: boolean } = { colors: false }
   ) {
     const { ansi } = this
-    return `Style { ${colors ? ansi : ''}${ansi.substring(1)}${
-      colors ? '\x1b[m' : ''
+    return `Style { ${colors ? ansi : ''}${ansi.replace(/\x1b/g, '^[')}${
+      colors ? '\x1b]8;;\x1b\\\x1b[m' : ''
     } }`
+  }
+
+  wrap(s: string) {
+    const css = this.toString()
+    const href = this.#href
+    if (!css && !href) return s
+    const tag = href ? `a` : 'span'
+    return `<${tag}${href ? ` href="${href}"` : ''}${
+      css ? ` style="${css}"` : ''
+    }>${htmlEscape(s)}</${tag}>`
   }
 
   toString() {
     if (this.#css) return this.#css
     let color = this.#inverse ? this.#background : this.#color
-    const background = this.#inverse ? this.#color : this.#background
+    let background = this.#inverse ? this.#color : this.#background
+    if (this.#inverse && !color && !background) {
+      color = DEFAULT_BG
+      background = DEFAULT_FG
+    }
     // dim text is a different color, unless the background is the same
     // color, and set to something other than default. !?!? hwyyyyyyy idgi
     if (this.#dim && !(color && color === background)) {
-      color = dimColor(color || (this.#inverse ? DEFAULT_BG : DEFAULT_FG))
+      color = dimColor(color || DEFAULT_FG)
     }
     const textDecoration = [
       ...(this.#underline ? ['underline'] : []),
@@ -408,3 +484,5 @@ export class Style {
     ].join(';'))
   }
 }
+
+const RESET = new Style(RESET_PROPS)

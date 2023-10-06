@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://node-tap.org/static/Fira_Code_v6/fira_code.css" />
+    <style type="text/css">
+      pre {
+        font-family: Fira Code, Iosevka SS09 Web, Monoid, Jetbrains Mono,
+          DejaVu Sans Code, Cascadia Code, Victor Mono, Lilex, monospace !important;
+        padding: 10px;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <pre style="color:#eeeeee;background:#222222;position:relative" title="isaacs/ansi-to-pre main - isaacs/ansi-to-pre">Script started on Fri Oct  6 16:46:10 2023
+                                                                                                                                            
+│<span style="color:#e000e0;background:#000000">isaacs/ansi-to-pre</span><span style="color:#000000;background:#000000">#</span><span style="color:#e000e0;background:#000000">main</span> <span style="color:#e0e0e0;background:#0040e0">moxy.lan</span>:~/dev/isaacs/ansi-to-pre <span style="color:#00a000">node@20.7.0</span> <span style="color:#ff0000;background:#000000">6d58116f
+</span><span style="color:#00b0b0;background:#000000">ansi-to-pre@0.0.0-0</span> undefined
+$ node
+Welcome to Node.js v20.7.0.
+Type ".help" for more information.
+> Terminal = require('./dist/commonjs/terminal.js').Terminal
+<span style="color:#00b0b0">[class Terminal]
+</span>> t = new Terminal().setStyle({ href: 'https://izs.me' }).setStyle({ color: 'blue', underline: true })
+Terminal {
+  cursor: [ <span style="color:#e0e000">0</span>, <span style="color:#e0e000">0</span> ],
+  brush: Style { <span style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m</span> },
+  text: [],
+  blocks: []
+}
+> t.write('my webpage').setStyle('\x1b[0m').setStyle({ href: '' })
+Terminal {
+  cursor: [ <span style="color:#e0e000">0</span>, <span style="color:#e0e000">10</span> ],
+  brush: Style { ^[]8;;^[\^[[0m },
+  text: [ <span style="color:#00a000">'my webpage'</span> ],
+  blocks: [
+    Block { Style { <span style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m</span> } <span style="color:#00a000">'my webpage'</span> }
+  ]
+}
+> t.write(' is a place where I write things of ')
+Terminal {
+  cursor: [ <span style="color:#e0e000">0</span>, <span style="color:#e0e000">46</span> ],
+  brush: Style { ^[]8;;^[\^[[0m },
+  text: [ <span style="color:#00a000">'my webpage is a place where I write things of '</span> ],
+  blocks: [
+    Block { Style { <span style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m</span> } <span style="color:#00a000">'my webpage'</span> },
+    Block { <span style="color:#00a000">' is a place where I write things of '</span> }
+  ]
+}
+> t.setStyle({inverse: true}).write('multiple')
+Terminal {
+  cursor: [ <span style="color:#e0e000">0</span>, <span style="color:#e0e000">54</span> ],
+  brush: Style { <span style="color:#222222;background:#eeeeee">^[]8;;^[\^[[0;7m</span> },
+  text: [ <span style="color:#00a000">'my webpage is a place where I write things of multiple'</span> ],
+  blocks: [
+    Block { Style { <span style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m</span> } <span style="color:#00a000">'my webpage'</span> },
+    Block { <span style="color:#00a000">' is a place where I write things of '</span> },
+    Block { Style { <span style="color:#222222;background:#eeeeee">^[]8;;^[\^[[0;7m</span> } <span style="color:#00a000">'multiple'</span> }
+  ]
+}
+> t.setStyle({inverse:false, color:'brightred'}).write(' styles')
+Terminal {
+  cursor: [ <span style="color:#e0e000">0</span>, <span style="color:#e0e000">61</span> ],
+  brush: Style { <span style="color:#ff3030">^[]8;;^[\^[[0;38;2;255;48;48m</span> },
+  text: [ <span style="color:#00a000">'my webpage is a place where I write things of multiple styles'</span> ],
+  blocks: [
+    Block { Style { <span style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m</span> } <span style="color:#00a000">'my webpage'</span> },
+    Block { <span style="color:#00a000">' is a place where I write things of '</span> },
+    Block { Style { <span style="color:#222222;background:#eeeeee">^[]8;;^[\^[[0;7m</span> } <span style="color:#00a000">'multiple'</span> },
+    Block { Style { <span style="color:#ff3030">^[]8;;^[\^[[0;38;2;255;48;48m</span> } <span style="color:#00a000">' styles'</span> }
+  ]
+}
+> t.setStyle({color:''}).write('!')
+Terminal {
+  cursor: [ <span style="color:#e0e000">0</span>, <span style="color:#e0e000">62</span> ],
+  brush: Style { ^[]8;;^[\^[[0m },
+  text: [ <span style="color:#00a000">'my webpage is a place where I write things of multiple styles!'</span> ],
+  blocks: [
+    Block { Style { <span style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m</span> } <span style="color:#00a000">'my webpage'</span> },
+    Block { <span style="color:#00a000">' is a place where I write things of '</span> },
+    Block { Style { <span style="color:#222222;background:#eeeeee">^[]8;;^[\^[[0;7m</span> } <span style="color:#00a000">'multiple'</span> },
+    Block { Style { <span style="color:#ff3030">^[]8;;^[\^[[0;38;2;255;48;48m</span> } <span style="color:#00a000">' styles'</span> },
+    Block { <span style="color:#00a000">'!'</span> }
+  ]
+}
+> String(t)
+<span style="color:#00a000">'&lt;pre style=&quot;color:#eeeeee;background:#222222;position:relative&quot;&gt;&lt;a href=&quot;https://izs.me/&quot; style=&quot;text-decoration:underline;color:#0040e0&quot;&gt;my webpage&lt;/a&gt; is a place where I write things of &lt;span style=&quot;color:#222222;background:#eeeeee&quot;&gt;multiple&lt;/span&gt;&lt;span style=&quot;color:#ff3030&quot;&gt; styles&lt;/span&gt;!&lt;/pre&gt;'
+</span>> console.log(t.ansi)
+<span style="text-decoration:underline;color:#0040e0">my webpage</span> is a place where I write things of <span style="color:#222222;background:#eeeeee">multiple</span><span style="color:#ff3030"> styles</span>!
+<span style="color:#404040">undefined
+</span>> 
+
+│<span style="color:#e000e0;background:#000000">isaacs/ansi-to-pre</span><span style="color:#000000;background:#000000">#</span><span style="color:#e000e0;background:#000000">main</span> <span style="color:#e0e0e0;background:#0040e0">moxy.lan</span>:~/dev/isaacs/ansi-to-pre <span style="color:#00a000">node@20.7.0</span> <span style="color:#ff0000;background:#000000">6d58116f
+</span><span style="color:#00b0b0;background:#000000">ansi-to-pre@0.0.0-0</span> undefined
+$ 
+exit
+
+Script done on Fri Oct  6 16:47:27 2023</pre>
+  </body>
+</html>

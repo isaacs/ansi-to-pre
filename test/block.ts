@@ -17,6 +17,24 @@ t.test('red and bold', t => {
   t.end()
 })
 
+t.test('blue underlines hyperlink', t => {
+  const redBold = new Style({
+    color: 'blue',
+    underline: true,
+    href: 'https://izs.me',
+  })
+  const block = new Block('some', redBold)
+  block.write(' text')
+
+  t.matchSnapshot(String(block))
+  t.matchSnapshot(block.ansi + '\x1b[m')
+  t.matchSnapshot(block.text)
+  t.matchSnapshot(block.style)
+  t.matchSnapshot(inspect(block, { colors: false }))
+  t.matchSnapshot(inspect(block, { colors: true }))
+  t.end()
+})
+
 t.test('unstyled', t => {
   const block = new Block('some text')
   t.matchSnapshot(String(block))

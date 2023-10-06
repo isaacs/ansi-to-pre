@@ -10,10 +10,10 @@
 // as their constituent parts rather than the conjoined glyph.
 
 import emojiRegex from 'emoji-regex'
-const EMOJI = emojiRegex()
+const EMOJI_RE = emojiRegex()
 export const fixEmoji = (s: string): string => {
   return s.replace(
-    EMOJI,
+    EMOJI_RE,
     c =>
       `<span style="position:absolute;line-height:1;margin-top:0.3ex">${c}</span>  `
   )

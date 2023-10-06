@@ -1,0 +1,153 @@
+]8;;\[0m$ node --test
+]8;;\[0;38;2;0;160;0m✔ add ]8;;\[0;38;2;64;64;64m(0.569917ms)
+]8;;\[0;38;2;0;160;0m✔ stringOrNull ]8;;\[0;38;2;64;64;64m(0.063833ms)
+]8;;\[0m▶ suite of tests that fail
+  ]8;;\[0;38;2;255;0;0m✖ uhoh, this one throws ]8;;\[0;38;2;64;64;64m(0.910959ms)
+]8;;\[0m    RangeError [Error]: Invalid time value
+        at Date.toISOString (<anonymous>)
+        at thrower ]8;;\[0;38;2;64;64;64m(file:///Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mlib/index.mjs:11:43]8;;\[0;38;2;64;64;64m)
+]8;;\[0m        at TestContext.<anonymous> ]8;;\[0;38;2;64;64;64m(file:///Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mtest/node.test.js:26:18]8;;\[0;38;2;64;64;64m)
+]8;;\[0m    ]8;;\[0;38;2;64;64;64m    at Test.runInAsyncScope (node:async_hooks:206:9)
+]8;;\[0m    ]8;;\[0;38;2;64;64;64m    at Test.run (node:internal/test_runner/test:631:25)
+]8;;\[0m    ]8;;\[0;38;2;64;64;64m    at Test.start (node:internal/test_runner/test:542:17)
+]8;;\[0m    ]8;;\[0;38;2;64;64;64m    at TestContext.test (node:internal/test_runner/test:167:20)
+]8;;\[0m        at TestContext.<anonymous> ]8;;\[0;38;2;64;64;64m(file:///Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mtest/node.test.js:23:11]8;;\[0;38;2;64;64;64m)
+]8;;\[0m    ]8;;\[0;38;2;64;64;64m    at Test.runInAsyncScope (node:async_hooks:206:9)
+]8;;\[0m    ]8;;\[0;38;2;64;64;64m    at Test.run (node:internal/test_runner/test:631:25)
+
+]8;;\[0m  ]8;;\[0;38;2;255;0;0m✖ failer ]8;;\[0;38;2;64;64;64m(0.532708ms)
+]8;;\[0m    AssertionError [ERR_ASSERTION]: '11' == '2'
+        at TestContext.<anonymous> ]8;;\[0;38;2;64;64;64m(file:///Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mtest/node.test.js:33:12]8;;\[0;38;2;64;64;64m)
+]8;;\[0m    ]8;;\[0;38;2;64;64;64m    at Test.runInAsyncScope (node:async_hooks:206:9)
+]8;;\[0m    ]8;;\[0;38;2;64;64;64m    at Test.run (node:internal/test_runner/test:631:25)
+]8;;\[0m    ]8;;\[0;38;2;64;64;64m    at Test.start (node:internal/test_runner/test:542:17)
+]8;;\[0m    ]8;;\[0;38;2;64;64;64m    at TestContext.test (node:internal/test_runner/test:167:20)
+]8;;\[0m        at TestContext.<anonymous> ]8;;\[0;38;2;64;64;64m(file:///Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mtest/node.test.js:29:11]8;;\[0;38;2;64;64;64m)
+]8;;\[0m    ]8;;\[0;38;2;64;64;64m    at async Test.run (node:internal/test_runner/test:632:9)
+]8;;\[0m    ]8;;\[0;38;2;64;64;64m    at async Test.processPendingSubtests (node:internal/test_runner/test:374:7)]8;;\[0m {
+      generatedMessage: ]8;;\[0;38;2;224;224;0mtrue]8;;\[0m,
+      code: ]8;;\[0;38;2;0;160;0m'ERR_ASSERTION']8;;\[0m,
+      actual: ]8;;\[0;38;2;0;160;0m'11']8;;\[0m,
+      expected: ]8;;\[0;38;2;0;160;0m'2']8;;\[0m,
+      operator: ]8;;\[0;38;2;0;160;0m'=='
+]8;;\[0m    }
+
+]8;;\[0;38;2;255;0;0m▶ ]8;;\[0msuite of tests that fail ]8;;\[0;38;2;64;64;64m(1.684292ms)
+
+]8;;\[0;38;2;0;160;0m✔ add ]8;;\[0;38;2;64;64;64m(1.774ms)
+]8;;\[0;38;2;0;160;0m✔ stringOrNull ]8;;\[0;38;2;64;64;64m(1.091ms)
+]8;;\[0m▶ suite of tests that fail
+  ]8;;\[0;38;2;255;0;0m✖ uhoh, this one throws ]8;;\[0;38;2;64;64;64m(10.016ms)
+]8;;\[0m    Error: Invalid time value
+    | // This is a function that throws, to show how both
+    | // handle errors.
+    | export const thrower = (n) => new Date(n).toISOString()
+    | ------------------------------------------^
+    | 
+    | // one that fails, to show how failures are handled
+        at Date.toISOString (<anonymous>)
+        at thrower ]8;;\[0;38;2;64;64;64m(/Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mlib/index.mjs:11:43]8;;\[0;38;2;64;64;64m)
+]8;;\[0m        at Test.<anonymous> ]8;;\[0;38;2;64;64;64m(/Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mtest/tap.test.js:27:13]8;;\[0;38;2;64;64;64m)]8;;\[0m {
+      type: ]8;;\[0;38;2;0;160;0m'RangeError']8;;\[0m,
+      tapCaught: ]8;;\[0;38;2;0;160;0m'testFunctionThrow'
+]8;;\[0m    }
+
+  ]8;;\[0;38;2;255;0;0m✖ failer ]8;;\[0;38;2;64;64;64m(3.676ms)
+]8;;\[0m    Error: should be equal
+    ]8;;\[0;38;2;255;229;241;48;2;172;62;163m--- expected                                                               
+]8;;\[0m    ]8;;\[0;38;2;242;255;229;48;2;58;117;0m+++ actual                                                                 
+]8;;\[0m    ]8;;\[0;38;2;117;158;239;48;2;34;34;34m@@ -1,1 +1,1 @@                                                            
+]8;;\[0m    ]8;;\[0;38;2;255;229;241;48;2;172;62;163m-2                                                                         
+]8;;\[0m    ]8;;\[0;38;2;242;255;229;48;2;58;117;0m+11                                                                        
+]8;;\[0m    |     t.equal(failer(-1), '0')
+    |     // expect to convert string numbers to Number, but doesn't
+    |     t.equal(failer('1'), '2')
+    | ------^
+    |     // expect to convert non-numerics to 0, but it doesn't
+    |     t.equal(failer({}), '1')
+        at Test.<anonymous> ]8;;\[0;38;2;64;64;64m(/Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mtest/tap.test.js:35:7]8;;\[0;38;2;64;64;64m)
+]8;;\[0m        at Test.<anonymous> ]8;;\[0;38;2;64;64;64m(/Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mtest/tap.test.js:31:5]8;;\[0;38;2;64;64;64m)
+]8;;\[0m        at ]8;;\[0;38;2;64;64;64m/Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mtest/tap.test.js:23:3 {
+      compare: ]8;;\[0;38;2;0;160;0m'==='
+]8;;\[0m    }
+
+]8;;\[0;38;2;255;0;0m▶ ]8;;\[0msuite of tests that fail ]8;;\[0;38;2;64;64;64m(17.681ms)
+
+]8;;\[0;38;2;0;64;224mℹ tests 9
+ℹ suites 1
+ℹ pass 4
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 160.809375
+
+]8;;\[0;38;2;255;0;0m✖ failing tests:
+
+]8;;\[0mtest at file:/Users/isaacs/dev/tapjs/node-test-example/test/node.test.js:23:11
+]8;;\[0;38;2;255;0;0m✖ uhoh, this one throws ]8;;\[0;38;2;64;64;64m(0.910959ms)
+]8;;\[0m  RangeError [Error]: Invalid time value
+      at Date.toISOString (<anonymous>)
+      at thrower ]8;;\[0;38;2;64;64;64m(file:///Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mlib/index.mjs:11:43]8;;\[0;38;2;64;64;64m)
+]8;;\[0m      at TestContext.<anonymous> ]8;;\[0;38;2;64;64;64m(file:///Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mtest/node.test.js:26:18]8;;\[0;38;2;64;64;64m)
+]8;;\[0m  ]8;;\[0;38;2;64;64;64m    at Test.runInAsyncScope (node:async_hooks:206:9)
+]8;;\[0m  ]8;;\[0;38;2;64;64;64m    at Test.run (node:internal/test_runner/test:631:25)
+]8;;\[0m  ]8;;\[0;38;2;64;64;64m    at Test.start (node:internal/test_runner/test:542:17)
+]8;;\[0m  ]8;;\[0;38;2;64;64;64m    at TestContext.test (node:internal/test_runner/test:167:20)
+]8;;\[0m      at TestContext.<anonymous> ]8;;\[0;38;2;64;64;64m(file:///Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mtest/node.test.js:23:11]8;;\[0;38;2;64;64;64m)
+]8;;\[0m  ]8;;\[0;38;2;64;64;64m    at Test.runInAsyncScope (node:async_hooks:206:9)
+]8;;\[0m  ]8;;\[0;38;2;64;64;64m    at Test.run (node:internal/test_runner/test:631:25)
+
+]8;;\[0mtest at file:/Users/isaacs/dev/tapjs/node-test-example/test/node.test.js:29:11
+]8;;\[0;38;2;255;0;0m✖ failer ]8;;\[0;38;2;64;64;64m(0.532708ms)
+]8;;\[0m  AssertionError [ERR_ASSERTION]: '11' == '2'
+      at TestContext.<anonymous> ]8;;\[0;38;2;64;64;64m(file:///Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mtest/node.test.js:33:12]8;;\[0;38;2;64;64;64m)
+]8;;\[0m  ]8;;\[0;38;2;64;64;64m    at Test.runInAsyncScope (node:async_hooks:206:9)
+]8;;\[0m  ]8;;\[0;38;2;64;64;64m    at Test.run (node:internal/test_runner/test:631:25)
+]8;;\[0m  ]8;;\[0;38;2;64;64;64m    at Test.start (node:internal/test_runner/test:542:17)
+]8;;\[0m  ]8;;\[0;38;2;64;64;64m    at TestContext.test (node:internal/test_runner/test:167:20)
+]8;;\[0m      at TestContext.<anonymous> ]8;;\[0;38;2;64;64;64m(file:///Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mtest/node.test.js:29:11]8;;\[0;38;2;64;64;64m)
+]8;;\[0m  ]8;;\[0;38;2;64;64;64m    at async Test.run (node:internal/test_runner/test:632:9)
+]8;;\[0m  ]8;;\[0;38;2;64;64;64m    at async Test.processPendingSubtests (node:internal/test_runner/test:374:7)]8;;\[0m {
+    generatedMessage: ]8;;\[0;38;2;224;224;0mtrue]8;;\[0m,
+    code: ]8;;\[0;38;2;0;160;0m'ERR_ASSERTION']8;;\[0m,
+    actual: ]8;;\[0;38;2;0;160;0m'11']8;;\[0m,
+    expected: ]8;;\[0;38;2;0;160;0m'2']8;;\[0m,
+    operator: ]8;;\[0;38;2;0;160;0m'=='
+]8;;\[0m  }
+
+test at test/tap.test.js:24:5
+]8;;\[0;38;2;255;0;0m✖ uhoh, this one throws ]8;;\[0;38;2;64;64;64m(10.016ms)
+]8;;\[0m  Error: Invalid time value
+  | // This is a function that throws, to show how both
+  | // handle errors.
+  | export const thrower = (n) => new Date(n).toISOString()
+  | ------------------------------------------^
+  | 
+  | // one that fails, to show how failures are handled
+      at Date.toISOString (<anonymous>)
+      at thrower ]8;;\[0;38;2;64;64;64m(/Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mlib/index.mjs:11:43]8;;\[0;38;2;64;64;64m)
+]8;;\[0m      at Test.<anonymous> ]8;;\[0;38;2;64;64;64m(/Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mtest/tap.test.js:27:13]8;;\[0;38;2;64;64;64m)]8;;\[0m {
+    type: ]8;;\[0;38;2;0;160;0m'RangeError']8;;\[0m,
+    tapCaught: ]8;;\[0;38;2;0;160;0m'testFunctionThrow'
+]8;;\[0m  }
+
+test at test/tap.test.js:31:5
+]8;;\[0;38;2;255;0;0m✖ failer ]8;;\[0;38;2;64;64;64m(3.676ms)
+]8;;\[0m  Error: should be equal
+  ]8;;\[0;38;2;255;229;241;48;2;172;62;163m--- expected                                                               
+]8;;\[0m  ]8;;\[0;38;2;242;255;229;48;2;58;117;0m+++ actual                                                                 
+]8;;\[0m  ]8;;\[0;38;2;117;158;239;48;2;34;34;34m@@ -1,1 +1,1 @@                                                            
+]8;;\[0m  ]8;;\[0;38;2;255;229;241;48;2;172;62;163m-2                                                                         
+]8;;\[0m  ]8;;\[0;38;2;242;255;229;48;2;58;117;0m+11                                                                        
+]8;;\[0m  |     t.equal(failer(-1), '0')
+  |     // expect to convert string numbers to Number, but doesn't
+  |     t.equal(failer('1'), '2')
+  | ------^
+  |     // expect to convert non-numerics to 0, but it doesn't
+  |     t.equal(failer({}), '1')
+      at Test.<anonymous> ]8;;\[0;38;2;64;64;64m(/Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mtest/tap.test.js:35:7]8;;\[0;38;2;64;64;64m)
+]8;;\[0m      at Test.<anonymous> ]8;;\[0;38;2;64;64;64m(/Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mtest/tap.test.js:31:5]8;;\[0;38;2;64;64;64m)
+]8;;\[0m      at ]8;;\[0;38;2;64;64;64m/Users/isaacs/dev/tapjs/node-test-example/]8;;\[0mtest/tap.test.js:23:3 {
+    compare: ]8;;\[0;38;2;0;160;0m'==='
+]8;;\[0m  }[m

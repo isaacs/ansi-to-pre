@@ -1,0 +1,84 @@
+Script started on Fri Oct  6 16:46:10 2023
+[3gH    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H[m
+│[0m]0;isaacs/ansi-to-pre main - isaacs/ansi-to-pre\[40;35misaacs/ansi-to-pre[40;30m#[40;35mmain[0m [44;37mmoxy.lan[0m:~/dev/isaacs/ansi-to-pre [32mnode@20.7.0[0m [40;31m6d58116f[0m
+[40;36mansi-to-pre@0.0.0-0[0m undefined
+[?2004h$ node
+[?2004lWelcome to Node.js v20.7.0.
+Type ".help" for more information.
+[1G[0J> [3GTerminal = require('./dist/commonjs/terminal.js').Terminal
+[36m[class Terminal][39m
+[1G[0J> [3Gt = new Terminal().setStyle({ href: 'https://izs.me' }).setStyle({ color: 'blue', underline: true })
+Terminal {
+  cursor: [ [33m0[39m, [33m0[39m ],
+  brush: Style { ]8;;https://izs.me/\[0;38;2;0;64;224;4m^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m]8;;\[m },
+  text: [],
+  blocks: []
+}
+[1G[0J> [3G.write('my webpage').setStyle('\x1b[0m').setStyle({ href: '' })[63D[1G[0J> t.write('my webpage').setStyle('\x1b[0m').setStyle({ href: '' })[4G[63C
+Terminal {
+  cursor: [ [33m0[39m, [33m10[39m ],
+  brush: Style { ]8;;\[0m^[]8;;^[\^[[0m]8;;\[m },
+  text: [ [32m'my webpage'[39m ],
+  blocks: [
+    Block { Style { ]8;;https://izs.me/\[0;38;2;0;64;224;4m^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m]8;;\[m } [32m'my webpage'[39m }
+  ]
+}
+[1G[0J> [3G.write(' is a place where I write things of ')[46D[1G[0J> t.write(' is a place where I write things of ')[4G[46C
+Terminal {
+  cursor: [ [33m0[39m, [33m46[39m ],
+  brush: Style { ]8;;\[0m^[]8;;^[\^[[0m]8;;\[m },
+  text: [ [32m'my webpage is a place where I write things of '[39m ],
+  blocks: [
+    Block { Style { ]8;;https://izs.me/\[0;38;2;0;64;224;4m^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m]8;;\[m } [32m'my webpage'[39m },
+    Block { [32m' is a place where I write things of '[39m }
+  ]
+}
+[1G[0J> [3G.setStyle({inverse: true}).write('multiple')[44D[1G[0J> t.setStyle({inverse: true}).write('multiple')[4G[44C
+Terminal {
+  cursor: [ [33m0[39m, [33m54[39m ],
+  brush: Style { ]8;;\[0;7m^[]8;;^[\^[[0;7m]8;;\[m },
+  text: [ [32m'my webpage is a place where I write things of multiple'[39m ],
+  blocks: [
+    Block { Style { ]8;;https://izs.me/\[0;38;2;0;64;224;4m^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m]8;;\[m } [32m'my webpage'[39m },
+    Block { [32m' is a place where I write things of '[39m },
+    Block { Style { ]8;;\[0;7m^[]8;;^[\^[[0;7m]8;;\[m } [32m'multiple'[39m }
+  ]
+}
+[1G[0J> [3G.setStyle({inverse:false, color:'brightred'}).write(' styles')[62D[1G[0J> t.setStyle({inverse:false, color:'brightred'}).write(' styles')[4G[62C
+Terminal {
+  cursor: [ [33m0[39m, [33m61[39m ],
+  brush: Style { ]8;;\[0;38;2;255;48;48m^[]8;;^[\^[[0;38;2;255;48;48m]8;;\[m },
+  text: [ [32m'my webpage is a place where I write things of multiple styles'[39m ],
+  blocks: [
+    Block { Style { ]8;;https://izs.me/\[0;38;2;0;64;224;4m^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m]8;;\[m } [32m'my webpage'[39m },
+    Block { [32m' is a place where I write things of '[39m },
+    Block { Style { ]8;;\[0;7m^[]8;;^[\^[[0;7m]8;;\[m } [32m'multiple'[39m },
+    Block { Style { ]8;;\[0;38;2;255;48;48m^[]8;;^[\^[[0;38;2;255;48;48m]8;;\[m } [32m' styles'[39m }
+  ]
+}
+[1G[0J> [3G.setStyle({color:''}).write('!')[32D[1G[0J> t.setStyle({color:''}).write('!')[4G[32C
+Terminal {
+  cursor: [ [33m0[39m, [33m62[39m ],
+  brush: Style { ]8;;\[0m^[]8;;^[\^[[0m]8;;\[m },
+  text: [ [32m'my webpage is a place where I write things of multiple styles!'[39m ],
+  blocks: [
+    Block { Style { ]8;;https://izs.me/\[0;38;2;0;64;224;4m^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m]8;;\[m } [32m'my webpage'[39m },
+    Block { [32m' is a place where I write things of '[39m },
+    Block { Style { ]8;;\[0;7m^[]8;;^[\^[[0;7m]8;;\[m } [32m'multiple'[39m },
+    Block { Style { ]8;;\[0;38;2;255;48;48m^[]8;;^[\^[[0;38;2;255;48;48m]8;;\[m } [32m' styles'[39m },
+    Block { [32m'!'[39m }
+  ]
+}
+[1G[0J> [3GString(t)
+[32m'<pre style="color:#eeeeee;background:#222222;position:relative"><a href="https://izs.me/" style="text-decoration:underline;color:#0040e0">my webpage</a> is a place where I write things of <span style="color:#222222;background:#eeeeee">multiple</span><span style="color:#ff3030"> styles</span>!</pre>'[39m
+[1G[0J> [3Gconsole.log(t.ansi)
+]8;;https://izs.me/\[0;38;2;0;64;224;4mmy webpage]8;;\[0m is a place where I write things of ]8;;\[0;7mmultiple]8;;\[0;38;2;255;48;48m styles]8;;\[0m![m
+[90mundefined[39m
+[1G[0J> [3G
+[m
+│[0m]0;isaacs/ansi-to-pre main - isaacs/ansi-to-pre\[40;35misaacs/ansi-to-pre[40;30m#[40;35mmain[0m [44;37mmoxy.lan[0m:~/dev/isaacs/ansi-to-pre [32mnode@20.7.0[0m [40;31m6d58116f[0m
+[40;36mansi-to-pre@0.0.0-0[0m undefined
+[?2004h$ [?2004l
+exit
+
+Script done on Fri Oct  6 16:47:27 2023
