@@ -85,5 +85,6 @@
     "chalk",
     "parse"
   ],
-  "license": "BlueOak-1.0.0"
+  "license": "BlueOak-1.0.0",
+  "repository": "https://github.com/isaacs/ansi-to-pre"
 }
