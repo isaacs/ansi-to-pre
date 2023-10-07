@@ -1,5 +1,5 @@
 import t from 'tap'
-import {inspect} from 'util'
+import { inspect } from 'util'
 import { Style, StyleProps } from '../src/style.js'
 
 t.equal(new Style({}), Style.RESET, 'empty style is reset style')
@@ -12,8 +12,7 @@ t.throws(() => new Style('\x1b invalid ansi code '), {
 
 t.throws(() => new Style('\x1b[1m hello \x1b[2m'), {
   message:
-    'invalid ansi style code: ' +
-    JSON.stringify('\x1b[1m hello \x1b[2m'),
+    'invalid ansi style code: ' + JSON.stringify('\x1b[1m hello \x1b[2m'),
 })
 
 t.equal(new Style('\x1b[m'), new Style('\x1b[0m'), '0 and "" equivalent')
@@ -71,7 +70,12 @@ t.test('styling from ansi code', t => {
       t.equal(s, fromProps, 'same style, same object')
       const upCode = acc.update(code)
       const upProps = acc.update(props)
-      t.equal(upCode, upProps, 'acc same via props or code', { code, props, upCode: upCode.ansi, upProps: upProps.ansi })
+      t.equal(upCode, upProps, 'acc same via props or code', {
+        code,
+        props,
+        upCode: upCode.ansi,
+        upProps: upProps.ansi,
+      })
       acc = upCode
       t.matchSnapshot(
         `${JSON.stringify(code)} ${JSON.stringify(s.ansi)}

@@ -294,25 +294,25 @@ exports[`test/terminal.ts > TAP > /Users/isaacs/dev/isaacs/ansi-to-pre/test/fixt
 </span><span style="position:absolute;line-height:1;margin-top:0.3ex">▶</span>   suite of tests that fail
   <span style="color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>   uhoh, this one throws </span><span style="color:#404040">(0.910959ms)
 </span>    RangeError [Error]: Invalid time value
-        at Date.toISOString (<anonymous>)
+        at Date.toISOString (&lt;anonymous&gt;)
         at thrower <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>lib/index.mjs:11:43<span style="color:#404040">)
-</span>        at TestContext.<anonymous> <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:26:18<span style="color:#404040">)
+</span>        at TestContext.&lt;anonymous&gt; <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:26:18<span style="color:#404040">)
 </span>    <span style="color:#404040">    at Test.runInAsyncScope (node:async_hooks:206:9)
 </span>    <span style="color:#404040">    at Test.run (node:internal/test_runner/test:631:25)
 </span>    <span style="color:#404040">    at Test.start (node:internal/test_runner/test:542:17)
 </span>    <span style="color:#404040">    at TestContext.test (node:internal/test_runner/test:167:20)
-</span>        at TestContext.<anonymous> <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:23:11<span style="color:#404040">)
+</span>        at TestContext.&lt;anonymous&gt; <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:23:11<span style="color:#404040">)
 </span>    <span style="color:#404040">    at Test.runInAsyncScope (node:async_hooks:206:9)
 </span>    <span style="color:#404040">    at Test.run (node:internal/test_runner/test:631:25)
 
 </span>  <span style="color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>   failer </span><span style="color:#404040">(0.532708ms)
 </span>    AssertionError [ERR_ASSERTION]: '11' == '2'
-        at TestContext.<anonymous> <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:33:12<span style="color:#404040">)
+        at TestContext.&lt;anonymous&gt; <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:33:12<span style="color:#404040">)
 </span>    <span style="color:#404040">    at Test.runInAsyncScope (node:async_hooks:206:9)
 </span>    <span style="color:#404040">    at Test.run (node:internal/test_runner/test:631:25)
 </span>    <span style="color:#404040">    at Test.start (node:internal/test_runner/test:542:17)
 </span>    <span style="color:#404040">    at TestContext.test (node:internal/test_runner/test:167:20)
-</span>        at TestContext.<anonymous> <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:29:11<span style="color:#404040">)
+</span>        at TestContext.&lt;anonymous&gt; <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:29:11<span style="color:#404040">)
 </span>    <span style="color:#404040">    at async Test.run (node:internal/test_runner/test:632:9)
 </span>    <span style="color:#404040">    at async Test.processPendingSubtests (node:internal/test_runner/test:374:7)</span> {
       generatedMessage: <span style="color:#e0e000">true</span>,
@@ -331,13 +331,13 @@ exports[`test/terminal.ts > TAP > /Users/isaacs/dev/isaacs/ansi-to-pre/test/fixt
 </span>    Error: Invalid time value
     | // This is a function that throws, to show how both
     | // handle errors.
-    | export const thrower = (n) => new Date(n).toISOString()
+    | export const thrower = (n) =&gt; new Date(n).toISOString()
     | ------------------------------------------^
     | 
     | // one that fails, to show how failures are handled
-        at Date.toISOString (<anonymous>)
+        at Date.toISOString (&lt;anonymous&gt;)
         at thrower <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>lib/index.mjs:11:43<span style="color:#404040">)
-</span>        at Test.<anonymous> <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:27:13<span style="color:#404040">)</span> {
+</span>        at Test.&lt;anonymous&gt; <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:27:13<span style="color:#404040">)</span> {
       type: <span style="color:#00a000">'RangeError'</span>,
       tapCaught: <span style="color:#00a000">'testFunctionThrow'
 </span>    }
@@ -355,8 +355,8 @@ exports[`test/terminal.ts > TAP > /Users/isaacs/dev/isaacs/ansi-to-pre/test/fixt
     | ------^
     |     // expect to convert non-numerics to 0, but it doesn't
     |     t.equal(failer({}), '1')
-        at Test.<anonymous> <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:35:7<span style="color:#404040">)
-</span>        at Test.<anonymous> <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:31:5<span style="color:#404040">)
+        at Test.&lt;anonymous&gt; <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:35:7<span style="color:#404040">)
+</span>        at Test.&lt;anonymous&gt; <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:31:5<span style="color:#404040">)
 </span>        at <span style="color:#404040">/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:23:3 {
       compare: <span style="color:#00a000">'==='
 </span>    }
@@ -377,26 +377,26 @@ exports[`test/terminal.ts > TAP > /Users/isaacs/dev/isaacs/ansi-to-pre/test/fixt
 </span>test at file:/Users/isaacs/dev/tapjs/node-test-example/test/node.test.js:23:11
 <span style="color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>   uhoh, this one throws </span><span style="color:#404040">(0.910959ms)
 </span>  RangeError [Error]: Invalid time value
-      at Date.toISOString (<anonymous>)
+      at Date.toISOString (&lt;anonymous&gt;)
       at thrower <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>lib/index.mjs:11:43<span style="color:#404040">)
-</span>      at TestContext.<anonymous> <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:26:18<span style="color:#404040">)
+</span>      at TestContext.&lt;anonymous&gt; <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:26:18<span style="color:#404040">)
 </span>  <span style="color:#404040">    at Test.runInAsyncScope (node:async_hooks:206:9)
 </span>  <span style="color:#404040">    at Test.run (node:internal/test_runner/test:631:25)
 </span>  <span style="color:#404040">    at Test.start (node:internal/test_runner/test:542:17)
 </span>  <span style="color:#404040">    at TestContext.test (node:internal/test_runner/test:167:20)
-</span>      at TestContext.<anonymous> <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:23:11<span style="color:#404040">)
+</span>      at TestContext.&lt;anonymous&gt; <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:23:11<span style="color:#404040">)
 </span>  <span style="color:#404040">    at Test.runInAsyncScope (node:async_hooks:206:9)
 </span>  <span style="color:#404040">    at Test.run (node:internal/test_runner/test:631:25)
 
 </span>test at file:/Users/isaacs/dev/tapjs/node-test-example/test/node.test.js:29:11
 <span style="color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>   failer </span><span style="color:#404040">(0.532708ms)
 </span>  AssertionError [ERR_ASSERTION]: '11' == '2'
-      at TestContext.<anonymous> <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:33:12<span style="color:#404040">)
+      at TestContext.&lt;anonymous&gt; <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:33:12<span style="color:#404040">)
 </span>  <span style="color:#404040">    at Test.runInAsyncScope (node:async_hooks:206:9)
 </span>  <span style="color:#404040">    at Test.run (node:internal/test_runner/test:631:25)
 </span>  <span style="color:#404040">    at Test.start (node:internal/test_runner/test:542:17)
 </span>  <span style="color:#404040">    at TestContext.test (node:internal/test_runner/test:167:20)
-</span>      at TestContext.<anonymous> <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:29:11<span style="color:#404040">)
+</span>      at TestContext.&lt;anonymous&gt; <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:29:11<span style="color:#404040">)
 </span>  <span style="color:#404040">    at async Test.run (node:internal/test_runner/test:632:9)
 </span>  <span style="color:#404040">    at async Test.processPendingSubtests (node:internal/test_runner/test:374:7)</span> {
     generatedMessage: <span style="color:#e0e000">true</span>,
@@ -411,13 +411,13 @@ test at test/tap.test.js:24:5
 </span>  Error: Invalid time value
   | // This is a function that throws, to show how both
   | // handle errors.
-  | export const thrower = (n) => new Date(n).toISOString()
+  | export const thrower = (n) =&gt; new Date(n).toISOString()
   | ------------------------------------------^
   | 
   | // one that fails, to show how failures are handled
-      at Date.toISOString (<anonymous>)
+      at Date.toISOString (&lt;anonymous&gt;)
       at thrower <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>lib/index.mjs:11:43<span style="color:#404040">)
-</span>      at Test.<anonymous> <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:27:13<span style="color:#404040">)</span> {
+</span>      at Test.&lt;anonymous&gt; <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:27:13<span style="color:#404040">)</span> {
     type: <span style="color:#00a000">'RangeError'</span>,
     tapCaught: <span style="color:#00a000">'testFunctionThrow'
 </span>  }
@@ -436,8 +436,8 @@ test at test/tap.test.js:31:5
   | ------^
   |     // expect to convert non-numerics to 0, but it doesn't
   |     t.equal(failer({}), '1')
-      at Test.<anonymous> <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:35:7<span style="color:#404040">)
-</span>      at Test.<anonymous> <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:31:5<span style="color:#404040">)
+      at Test.&lt;anonymous&gt; <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:35:7<span style="color:#404040">)
+</span>      at Test.&lt;anonymous&gt; <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:31:5<span style="color:#404040">)
 </span>      at <span style="color:#404040">/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:23:3 {
     compare: <span style="color:#00a000">'==='
 </span>  }</pre>
@@ -559,17 +559,17 @@ exports[`test/terminal.ts > TAP > /Users/isaacs/dev/isaacs/ansi-to-pre/test/fixt
 </span><span style="color:#00b0b0;background:#000000">ansi-to-pre@0.0.0-0</span> undefined
 $ node
 Welcome to Node.js v20.7.0.
-Type ".help" for more information.
-> Terminal = require('./dist/commonjs/terminal.js').Terminal
+Type &quot;.help&quot; for more information.
+&gt; Terminal = require('./dist/commonjs/terminal.js').Terminal
 <span style="color:#00b0b0">[class Terminal]
-</span>> t = new Terminal().setStyle({ href: 'https://izs.me' }).setStyle({ color: 'blue', underline: true })
+</span>&gt; t = new Terminal().setStyle({ href: 'https://izs.me' }).setStyle({ color: 'blue', underline: true })
 Terminal {
   cursor: [ <span style="color:#e0e000">0</span>, <span style="color:#e0e000">0</span> ],
   brush: Style { <a href="https://izs.me/" style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\\^[[0;38;2;0;64;224;4m</a> },
   text: [],
   blocks: []
 }
-> t.write('my webpage').setStyle('\\x1b[0m').setStyle({ href: '' })
+&gt; t.write('my webpage').setStyle('\\x1b[0m').setStyle({ href: '' })
 Terminal {
   cursor: [ <span style="color:#e0e000">0</span>, <span style="color:#e0e000">10</span> ],
   brush: Style { ^[]8;;^[\\^[[0m },
@@ -578,7 +578,7 @@ Terminal {
     Block { Style { <a href="https://izs.me/" style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\\^[[0;38;2;0;64;224;4m</a> } <span style="color:#00a000">'my webpage'</span> }
   ]
 }
-> t.write(' is a place where I write things of ')
+&gt; t.write(' is a place where I write things of ')
 Terminal {
   cursor: [ <span style="color:#e0e000">0</span>, <span style="color:#e0e000">46</span> ],
   brush: Style { ^[]8;;^[\\^[[0m },
@@ -588,7 +588,7 @@ Terminal {
     Block { <span style="color:#00a000">' is a place where I write things of '</span> }
   ]
 }
-> t.setStyle({inverse: true}).write('multiple')
+&gt; t.setStyle({inverse: true}).write('multiple')
 Terminal {
   cursor: [ <span style="color:#e0e000">0</span>, <span style="color:#e0e000">54</span> ],
   brush: Style { <span style="color:#222222;background:#eeeeee">^[]8;;^[\\^[[0;7m</span> },
@@ -599,7 +599,7 @@ Terminal {
     Block { Style { <span style="color:#222222;background:#eeeeee">^[]8;;^[\\^[[0;7m</span> } <span style="color:#00a000">'multiple'</span> }
   ]
 }
-> t.setStyle({inverse:false, color:'brightred'}).write(' styles')
+&gt; t.setStyle({inverse:false, color:'brightred'}).write(' styles')
 Terminal {
   cursor: [ <span style="color:#e0e000">0</span>, <span style="color:#e0e000">61</span> ],
   brush: Style { <span style="color:#ff3030">^[]8;;^[\\^[[0;38;2;255;48;48m</span> },
@@ -611,7 +611,7 @@ Terminal {
     Block { Style { <span style="color:#ff3030">^[]8;;^[\\^[[0;38;2;255;48;48m</span> } <span style="color:#00a000">' styles'</span> }
   ]
 }
-> t.setStyle({color:''}).write('!')
+&gt; t.setStyle({color:''}).write('!')
 Terminal {
   cursor: [ <span style="color:#e0e000">0</span>, <span style="color:#e0e000">62</span> ],
   brush: Style { ^[]8;;^[\\^[[0m },
@@ -624,12 +624,12 @@ Terminal {
     Block { <span style="color:#00a000">'!'</span> }
   ]
 }
-> String(t)
+&gt; String(t)
 <span style="color:#00a000">'&lt;pre style=&quot;color:#eeeeee;background:#222222;position:relative&quot;&gt;&lt;a href=&quot;https://izs.me/&quot; style=&quot;text-decoration:underline;color:#0040e0&quot;&gt;my webpage&lt;/a&gt; is a place where I write things of &lt;span style=&quot;color:#222222;background:#eeeeee&quot;&gt;multiple&lt;/span&gt;&lt;span style=&quot;color:#ff3030&quot;&gt; styles&lt;/span&gt;!&lt;/pre&gt;'
-</span>> console.log(t.ansi)
+</span>&gt; console.log(t.ansi)
 <a href="https://izs.me/" style="text-decoration:underline;color:#0040e0">my webpage</a> is a place where I write things of <span style="color:#222222;background:#eeeeee">multiple</span><span style="color:#ff3030"> styles</span>!
 <span style="color:#404040">undefined
-</span>> 
+</span>&gt; 
 
 │<span style="color:#e000e0;background:#000000">isaacs/ansi-to-pre</span><span style="color:#000000;background:#000000">#</span><span style="color:#e000e0;background:#000000">main</span> <span style="color:#e0e0e0;background:#0040e0">moxy.lan</span>:~/dev/isaacs/ansi-to-pre <span style="color:#00a000">node@20.7.0</span> <span style="color:#ff0000;background:#000000">6d58116f
 </span><span style="color:#00b0b0;background:#000000">ansi-to-pre@0.0.0-0</span> undefined
@@ -791,19 +791,19 @@ Script done on Wed Oct  4 15:31:47 2023[m
 
 exports[`test/terminal.ts > TAP > /Users/isaacs/dev/isaacs/ansi-to-pre/test/fixtures/tap.out > html 1`] = `
 <pre style="color:#eeeeee;background:#222222;position:relative" title="tapjs/node-test-example main - tapjs/node-test-example"><span style="font-weight:bold;color:#ffffff;background:#ff0000"> FAIL </span> test/node.test.js <span style="color:#ff0000">2 failed</span> of <span style="font-weight:bold">4</span> <span style="font-weight:100;color:#b2b2b2">6.498ms
-</span> <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail > uhoh, this one throws
- <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail > failer
+</span> <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail &gt; uhoh, this one throws
+ <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail &gt; failer
 <span style="font-weight:bold;color:#ffffff;background:#ff0000"> FAIL </span> test/tap.test.js <span style="color:#ff0000">3 failed</span> of <span style="font-weight:bold">18</span> <span style="font-weight:100;color:#b2b2b2">383ms
-</span> <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail > uhoh, this one throws > Invalid time value <span style="font-weight:100;color:#b2b2b2">lib/index.mjs:11:43
-</span> <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail > failer > should be equal <span style="font-weight:100;color:#b2b2b2">test/tap.test.js:35:7
-</span> <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail > failer > should be equal <span style="font-weight:100;color:#b2b2b2">test/tap.test.js:37:7
+</span> <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail &gt; uhoh, this one throws &gt; Invalid time value <span style="font-weight:100;color:#b2b2b2">lib/index.mjs:11:43
+</span> <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail &gt; failer &gt; should be equal <span style="font-weight:100;color:#b2b2b2">test/tap.test.js:35:7
+</span> <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail &gt; failer &gt; should be equal <span style="font-weight:100;color:#b2b2b2">test/tap.test.js:37:7
 
 </span><span style="background:#ffffff">                       
 </span><span style="font-weight:bold;color:#000000;background:#ffffff">  <span style="position:absolute;line-height:1;margin-top:0.3ex">🌈</span>   TEST COMPLETE <span style="position:absolute;line-height:1;margin-top:0.3ex">🌈</span>    
 </span><span style="background:#ffffff">                       
 
 </span><span style="font-weight:bold;color:#ffffff;background:#ff0000"> FAIL </span> test/node.test.js <span style="color:#ff0000">2 failed</span> of <span style="font-weight:bold">4</span> <span style="font-weight:100;color:#b2b2b2">6.498ms
-</span> <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail > uhoh, this one throws
+</span> <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail &gt; uhoh, this one throws
     <span style="font-weight:100;color:#b2b2b2;background:#1c1c1c">test/node.test.js                                                       
 </span>    <span style="color:#8fa5d1;background:#1c1c1c">20 </span><span style="color:#93cdff;background:#1c1c1c">})</span><span style="color:#d0d0d0;background:#1c1c1c">                                                                   
 </span>    <span style="color:#8fa5d1;background:#1c1c1c">21 </span><span style="color:#d0d0d0;background:#1c1c1c">                                                                     
@@ -832,7 +832,7 @@ exports[`test/terminal.ts > TAP > /Users/isaacs/dev/isaacs/ansi-to-pre/test/fixt
 </span>    <span style="font-weight:100;color:#b2b2b2">TestContext.&lt;anonymous&gt; (</span><span style="color:#ffff00">test/node.test.js</span><span style="font-weight:100;color:#b2b2b2">:26:18)
 </span>    <span style="font-weight:100;color:#b2b2b2">TestContext.&lt;anonymous&gt; (</span><span style="color:#ffff00">test/node.test.js</span><span style="font-weight:100;color:#b2b2b2">:23:11)
 
-</span> <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail > failer
+</span> <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail &gt; failer
     <span style="font-weight:100;color:#b2b2b2;background:#1c1c1c">test/node.test.js                                                       
 </span>    <span style="color:#8fa5d1;background:#1c1c1c">26 </span><span style="color:#d0d0d0;background:#1c1c1c">    assert</span><span style="color:#93cdff;background:#1c1c1c">.</span><span style="color:#d0d0d0;background:#1c1c1c">equal</span><span style="color:#93cdff;background:#1c1c1c">(</span><span style="color:#d0d0d0;background:#1c1c1c">thrower</span><span style="color:#93cdff;background:#1c1c1c">({}),</span><span style="color:#d0d0d0;background:#1c1c1c"> </span><span style="color:#87d75f;background:#1c1c1c">'Invalid Date'</span><span style="color:#93cdff;background:#1c1c1c">)</span><span style="color:#d0d0d0;background:#1c1c1c">                        
 </span>    <span style="color:#8fa5d1;background:#1c1c1c">27 </span><span style="color:#d0d0d0;background:#1c1c1c">  </span><span style="color:#93cdff;background:#1c1c1c">})</span><span style="color:#d0d0d0;background:#1c1c1c">                                                                 
@@ -858,7 +858,7 @@ exports[`test/terminal.ts > TAP > /Users/isaacs/dev/isaacs/ansi-to-pre/test/fixt
 </span>    <span style="font-weight:bold;color:#759eef;background:#222222">@@ -1,1 +1,1 @@
 </span>    <span style="color:#ffe5f1;background:#ac3ea3">-&quot;2&quot;           
 </span>    <span style="color:#f2ffe5;background:#3a7500">+&quot;11&quot;          
-</span>    <span style="font-weight:100;color:#b2b2b2">error:</span> "'11' == '2'"
+</span>    <span style="font-weight:100;color:#b2b2b2">error:</span> &quot;'11' == '2'&quot;
     <span style="font-weight:100;color:#b2b2b2">code:</span> ERR_ASSERTION
     <span style="font-weight:100;color:#b2b2b2">failureType: testCodeFailure
 </span>    <span style="font-weight:100;color:#b2b2b2">name: AssertionError
@@ -867,7 +867,7 @@ exports[`test/terminal.ts > TAP > /Users/isaacs/dev/isaacs/ansi-to-pre/test/fixt
 </span>    <span style="font-weight:100;color:#b2b2b2">TestContext.&lt;anonymous&gt; (</span><span style="color:#ffff00">test/node.test.js</span><span style="font-weight:100;color:#b2b2b2">:29:11)
 
 </span><span style="font-weight:bold;color:#ffffff;background:#ff0000"> FAIL </span> test/tap.test.js <span style="color:#ff0000">3 failed</span> of <span style="font-weight:bold">18</span> <span style="font-weight:100;color:#b2b2b2">383ms
-</span> <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail > uhoh, this one throws > Invalid time value
+</span> <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail &gt; uhoh, this one throws &gt; Invalid time value
     <span style="font-weight:100;color:#b2b2b2;background:#1c1c1c">lib/index.mjs                                                
 </span>    <span style="color:#8fa5d1;background:#1c1c1c"> 8 </span><span style="color:#d0d0d0;background:#1c1c1c">                                                          
 </span>    <span style="color:#8fa5d1;background:#1c1c1c"> 9 </span><span style="font-style:italic;color:#d75fff;background:#1c1c1c">// This is a function that throws, to show how both</span><span style="color:#d0d0d0;background:#1c1c1c">       
@@ -883,7 +883,7 @@ exports[`test/terminal.ts > TAP > /Users/isaacs/dev/isaacs/ansi-to-pre/test/fixt
 </span>    <span style="font-weight:100;color:#b2b2b2">thrower (</span><span style="color:#ffff00">lib/index.mjs</span><span style="font-weight:100;color:#b2b2b2">:11:43)
 </span>    <span style="font-weight:100;color:#b2b2b2">Test.&lt;anonymous&gt; (</span><span style="color:#ffff00">test/tap.test.js</span><span style="font-weight:100;color:#b2b2b2">:27:13)
 
-</span> <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail > failer > should be equal
+</span> <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail &gt; failer &gt; should be equal
     <span style="font-weight:100;color:#b2b2b2;background:#1c1c1c">test/tap.test.js                                                        
 </span>    <span style="color:#8fa5d1;background:#1c1c1c">32 </span><span style="color:#d0d0d0;background:#1c1c1c">    t</span><span style="color:#93cdff;background:#1c1c1c">.</span><span style="color:#d0d0d0;background:#1c1c1c">equal</span><span style="color:#93cdff;background:#1c1c1c">(</span><span style="color:#d0d0d0;background:#1c1c1c">failer</span><span style="color:#93cdff;background:#1c1c1c">(</span><span style="color:#87d75f;background:#1c1c1c">1</span><span style="color:#93cdff;background:#1c1c1c">),</span><span style="color:#d0d0d0;background:#1c1c1c"> </span><span style="color:#87d75f;background:#1c1c1c">'2'</span><span style="color:#93cdff;background:#1c1c1c">)</span><span style="color:#d0d0d0;background:#1c1c1c">                                          
 </span>    <span style="color:#8fa5d1;background:#1c1c1c">33 </span><span style="color:#d0d0d0;background:#1c1c1c">    t</span><span style="color:#93cdff;background:#1c1c1c">.</span><span style="color:#d0d0d0;background:#1c1c1c">equal</span><span style="color:#93cdff;background:#1c1c1c">(</span><span style="color:#d0d0d0;background:#1c1c1c">failer</span><span style="color:#93cdff;background:#1c1c1c">(</span><span style="color:#d0d0d0;background:#1c1c1c">-</span><span style="color:#87d75f;background:#1c1c1c">1</span><span style="color:#93cdff;background:#1c1c1c">),</span><span style="color:#d0d0d0;background:#1c1c1c"> </span><span style="color:#87d75f;background:#1c1c1c">'0'</span><span style="color:#93cdff;background:#1c1c1c">)</span><span style="color:#d0d0d0;background:#1c1c1c">                                         
@@ -904,7 +904,7 @@ exports[`test/terminal.ts > TAP > /Users/isaacs/dev/isaacs/ansi-to-pre/test/fixt
 </span>    <span style="font-weight:100;color:#b2b2b2">Test.&lt;anonymous&gt; (</span><span style="color:#ffff00">test/tap.test.js</span><span style="font-weight:100;color:#b2b2b2">:31:5)
 </span>    <span style="color:#ffff00">test/tap.test.js</span><span style="font-weight:100;color:#b2b2b2">:23:3
 
-</span> <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail > failer > should be equal
+</span> <span style="font-weight:bold;color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>  </span> suite of tests that fail &gt; failer &gt; should be equal
     <span style="font-weight:100;color:#b2b2b2;background:#1c1c1c">test/tap.test.js                                                        
 </span>    <span style="color:#8fa5d1;background:#1c1c1c">34 </span><span style="color:#d0d0d0;background:#1c1c1c">    </span><span style="font-style:italic;color:#d75fff;background:#1c1c1c">// expect to convert string numbers to Number, but doesn't</span><span style="color:#d0d0d0;background:#1c1c1c">       
 </span>    <span style="color:#8fa5d1;background:#1c1c1c">35 </span><span style="color:#d0d0d0;background:#1c1c1c">    t</span><span style="color:#93cdff;background:#1c1c1c">.</span><span style="color:#d0d0d0;background:#1c1c1c">equal</span><span style="color:#93cdff;background:#1c1c1c">(</span><span style="color:#d0d0d0;background:#1c1c1c">failer</span><span style="color:#93cdff;background:#1c1c1c">(</span><span style="color:#87d75f;background:#1c1c1c">'1'</span><span style="color:#93cdff;background:#1c1c1c">),</span><span style="color:#d0d0d0;background:#1c1c1c"> </span><span style="color:#87d75f;background:#1c1c1c">'2'</span><span style="color:#93cdff;background:#1c1c1c">)</span><span style="color:#d0d0d0;background:#1c1c1c">                                        

@@ -39,9 +39,7 @@ export class Block {
       ? ''
       : ansi
       ? (this.#style ?? Style.RESET).ansi + this.#text
-      : this.#style
-      ? fixEmoji(this.#style.wrap(this.#text))
-      : fixEmoji(this.#text)
+      : fixEmoji((this.#style ?? Style.RESET).wrap(this.#text))
   }
 
   /** append text to the block */

@@ -460,7 +460,7 @@ export class Style {
   wrap(s: string) {
     const css = this.toString()
     const href = this.#href
-    if (!css && !href) return s
+    if (!css && !href) return htmlEscape(s)
     const tag = href ? `a` : 'span'
     return `<${tag}${href ? ` href="${href}"` : ''}${
       css ? ` style="${css}"` : ''

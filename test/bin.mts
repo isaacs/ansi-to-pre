@@ -117,7 +117,7 @@ t.test('bin tests', async t => {
 
   t.test('input/output files', async t => {
     const dir = t.testdir({
-      input: '\x1b[41mred red red red red\x1b[44mblue\x1b[10Dblue'
+      input: '\x1b[41mred red red red red\x1b[44mblue\x1b[10Dblue',
     })
     const output = new Minipass<string>({ encoding: 'utf8' })
 
@@ -129,12 +129,19 @@ t.test('bin tests', async t => {
       '\x1b[m'
 
     t.intercept(process, 'argv', {
-      value: [process.execPath, process.argv[1], '--format=ansi',
-        '-i', dir + '/input', '-o', dir + '/output'],
+      value: [
+        process.execPath,
+        process.argv[1],
+        '--format=ansi',
+        '-i',
+        dir + '/input',
+        '-o',
+        dir + '/output',
+      ],
     })
     await t.mockImport('../dist/esm/bin.mjs', {
       fs: t.createMock(FS, {
-        createWriteStream: () => output
+        createWriteStream: () => output,
       }),
     })
     t.equal(await output.concat(), expect)

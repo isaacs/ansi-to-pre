@@ -20,25 +20,25 @@
 </span><span style="position:absolute;line-height:1;margin-top:0.3ex">▶</span>   suite of tests that fail
   <span style="color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>   uhoh, this one throws </span><span style="color:#404040">(0.910959ms)
 </span>    RangeError [Error]: Invalid time value
-        at Date.toISOString (<anonymous>)
+        at Date.toISOString (&lt;anonymous&gt;)
         at thrower <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>lib/index.mjs:11:43<span style="color:#404040">)
-</span>        at TestContext.<anonymous> <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:26:18<span style="color:#404040">)
+</span>        at TestContext.&lt;anonymous&gt; <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:26:18<span style="color:#404040">)
 </span>    <span style="color:#404040">    at Test.runInAsyncScope (node:async_hooks:206:9)
 </span>    <span style="color:#404040">    at Test.run (node:internal/test_runner/test:631:25)
 </span>    <span style="color:#404040">    at Test.start (node:internal/test_runner/test:542:17)
 </span>    <span style="color:#404040">    at TestContext.test (node:internal/test_runner/test:167:20)
-</span>        at TestContext.<anonymous> <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:23:11<span style="color:#404040">)
+</span>        at TestContext.&lt;anonymous&gt; <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:23:11<span style="color:#404040">)
 </span>    <span style="color:#404040">    at Test.runInAsyncScope (node:async_hooks:206:9)
 </span>    <span style="color:#404040">    at Test.run (node:internal/test_runner/test:631:25)
 
 </span>  <span style="color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>   failer </span><span style="color:#404040">(0.532708ms)
 </span>    AssertionError [ERR_ASSERTION]: '11' == '2'
-        at TestContext.<anonymous> <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:33:12<span style="color:#404040">)
+        at TestContext.&lt;anonymous&gt; <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:33:12<span style="color:#404040">)
 </span>    <span style="color:#404040">    at Test.runInAsyncScope (node:async_hooks:206:9)
 </span>    <span style="color:#404040">    at Test.run (node:internal/test_runner/test:631:25)
 </span>    <span style="color:#404040">    at Test.start (node:internal/test_runner/test:542:17)
 </span>    <span style="color:#404040">    at TestContext.test (node:internal/test_runner/test:167:20)
-</span>        at TestContext.<anonymous> <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:29:11<span style="color:#404040">)
+</span>        at TestContext.&lt;anonymous&gt; <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:29:11<span style="color:#404040">)
 </span>    <span style="color:#404040">    at async Test.run (node:internal/test_runner/test:632:9)
 </span>    <span style="color:#404040">    at async Test.processPendingSubtests (node:internal/test_runner/test:374:7)</span> {
       generatedMessage: <span style="color:#e0e000">true</span>,
@@ -57,13 +57,13 @@
 </span>    Error: Invalid time value
     | // This is a function that throws, to show how both
     | // handle errors.
-    | export const thrower = (n) => new Date(n).toISOString()
+    | export const thrower = (n) =&gt; new Date(n).toISOString()
     | ------------------------------------------^
     | 
     | // one that fails, to show how failures are handled
-        at Date.toISOString (<anonymous>)
+        at Date.toISOString (&lt;anonymous&gt;)
         at thrower <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>lib/index.mjs:11:43<span style="color:#404040">)
-</span>        at Test.<anonymous> <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:27:13<span style="color:#404040">)</span> {
+</span>        at Test.&lt;anonymous&gt; <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:27:13<span style="color:#404040">)</span> {
       type: <span style="color:#00a000">'RangeError'</span>,
       tapCaught: <span style="color:#00a000">'testFunctionThrow'
 </span>    }
@@ -81,8 +81,8 @@
     | ------^
     |     // expect to convert non-numerics to 0, but it doesn't
     |     t.equal(failer({}), '1')
-        at Test.<anonymous> <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:35:7<span style="color:#404040">)
-</span>        at Test.<anonymous> <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:31:5<span style="color:#404040">)
+        at Test.&lt;anonymous&gt; <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:35:7<span style="color:#404040">)
+</span>        at Test.&lt;anonymous&gt; <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:31:5<span style="color:#404040">)
 </span>        at <span style="color:#404040">/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:23:3 {
       compare: <span style="color:#00a000">'==='
 </span>    }
@@ -103,26 +103,26 @@
 </span>test at file:/Users/isaacs/dev/tapjs/node-test-example/test/node.test.js:23:11
 <span style="color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>   uhoh, this one throws </span><span style="color:#404040">(0.910959ms)
 </span>  RangeError [Error]: Invalid time value
-      at Date.toISOString (<anonymous>)
+      at Date.toISOString (&lt;anonymous&gt;)
       at thrower <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>lib/index.mjs:11:43<span style="color:#404040">)
-</span>      at TestContext.<anonymous> <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:26:18<span style="color:#404040">)
+</span>      at TestContext.&lt;anonymous&gt; <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:26:18<span style="color:#404040">)
 </span>  <span style="color:#404040">    at Test.runInAsyncScope (node:async_hooks:206:9)
 </span>  <span style="color:#404040">    at Test.run (node:internal/test_runner/test:631:25)
 </span>  <span style="color:#404040">    at Test.start (node:internal/test_runner/test:542:17)
 </span>  <span style="color:#404040">    at TestContext.test (node:internal/test_runner/test:167:20)
-</span>      at TestContext.<anonymous> <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:23:11<span style="color:#404040">)
+</span>      at TestContext.&lt;anonymous&gt; <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:23:11<span style="color:#404040">)
 </span>  <span style="color:#404040">    at Test.runInAsyncScope (node:async_hooks:206:9)
 </span>  <span style="color:#404040">    at Test.run (node:internal/test_runner/test:631:25)
 
 </span>test at file:/Users/isaacs/dev/tapjs/node-test-example/test/node.test.js:29:11
 <span style="color:#ff0000"><span style="position:absolute;line-height:1;margin-top:0.3ex">✖</span>   failer </span><span style="color:#404040">(0.532708ms)
 </span>  AssertionError [ERR_ASSERTION]: '11' == '2'
-      at TestContext.<anonymous> <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:33:12<span style="color:#404040">)
+      at TestContext.&lt;anonymous&gt; <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:33:12<span style="color:#404040">)
 </span>  <span style="color:#404040">    at Test.runInAsyncScope (node:async_hooks:206:9)
 </span>  <span style="color:#404040">    at Test.run (node:internal/test_runner/test:631:25)
 </span>  <span style="color:#404040">    at Test.start (node:internal/test_runner/test:542:17)
 </span>  <span style="color:#404040">    at TestContext.test (node:internal/test_runner/test:167:20)
-</span>      at TestContext.<anonymous> <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:29:11<span style="color:#404040">)
+</span>      at TestContext.&lt;anonymous&gt; <span style="color:#404040">(file:///Users/isaacs/dev/tapjs/node-test-example/</span>test/node.test.js:29:11<span style="color:#404040">)
 </span>  <span style="color:#404040">    at async Test.run (node:internal/test_runner/test:632:9)
 </span>  <span style="color:#404040">    at async Test.processPendingSubtests (node:internal/test_runner/test:374:7)</span> {
     generatedMessage: <span style="color:#e0e000">true</span>,
@@ -137,13 +137,13 @@ test at test/tap.test.js:24:5
 </span>  Error: Invalid time value
   | // This is a function that throws, to show how both
   | // handle errors.
-  | export const thrower = (n) => new Date(n).toISOString()
+  | export const thrower = (n) =&gt; new Date(n).toISOString()
   | ------------------------------------------^
   | 
   | // one that fails, to show how failures are handled
-      at Date.toISOString (<anonymous>)
+      at Date.toISOString (&lt;anonymous&gt;)
       at thrower <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>lib/index.mjs:11:43<span style="color:#404040">)
-</span>      at Test.<anonymous> <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:27:13<span style="color:#404040">)</span> {
+</span>      at Test.&lt;anonymous&gt; <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:27:13<span style="color:#404040">)</span> {
     type: <span style="color:#00a000">'RangeError'</span>,
     tapCaught: <span style="color:#00a000">'testFunctionThrow'
 </span>  }
@@ -162,8 +162,8 @@ test at test/tap.test.js:31:5
   | ------^
   |     // expect to convert non-numerics to 0, but it doesn't
   |     t.equal(failer({}), '1')
-      at Test.<anonymous> <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:35:7<span style="color:#404040">)
-</span>      at Test.<anonymous> <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:31:5<span style="color:#404040">)
+      at Test.&lt;anonymous&gt; <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:35:7<span style="color:#404040">)
+</span>      at Test.&lt;anonymous&gt; <span style="color:#404040">(/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:31:5<span style="color:#404040">)
 </span>      at <span style="color:#404040">/Users/isaacs/dev/tapjs/node-test-example/</span>test/tap.test.js:23:3 {
     compare: <span style="color:#00a000">'==='
 </span>  }</pre>
