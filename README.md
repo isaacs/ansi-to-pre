@@ -104,9 +104,11 @@ import {
   Style,
 
   // other goodies
+  theme,
   defaultColor,
   defaultBackground,
   nameCodes,
+  codeNames,
   namedColors,
   namedBrightColors,
   xtermCode,
