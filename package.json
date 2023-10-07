@@ -84,5 +84,6 @@
     "color",
     "chalk",
     "parse"
-  ]
+  ],
+  "license": "BlueOak-1.0.0"
 }
