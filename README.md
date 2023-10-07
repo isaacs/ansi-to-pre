@@ -94,11 +94,22 @@ for complicated "write stuff to the terminal" tasks.
 
 ```
 import {
+  // main functions
   ansiToPre,
   ansiToAnsi,
+
+  // classes
   Terminal,
   Block,
   Style,
+
+  // other goodies
+  DEFAULT_BG,
+  DEFAULT_FG,
+  names,
+  namedCodes,
+  namedBright,
+  xtermCodes,
 } from 'ansi-to-pre'
 ```
 
@@ -335,3 +346,31 @@ True if this style is a full reset of all properties.
 #### property `ansi: string`
 
 A `\x1b[...m` ANSI code corresponding to this style.
+
+### `DEFAULT_BG: string`, `DEFAULT_FG: string`
+
+The hex codes set on the `<pre>` for `background` and `color`,
+and used as the "unstyled" colors.
+
+### type `Names`
+
+Canonical names for the 8 standard colors.
+
+### `names: { [name in Names]: number }`
+
+Mapping of the named colors to their ANSI bitwise `grb` color codes.
+
+### `namedCodes: string[]`
+
+Mapping of the named color codes to their HEX color
+represenations.
+
+### `namedBright: string[]`
+
+Mapping of named color codes to the HEX color represenataions of
+their bright variants.
+
+### `xtermCodes: string[]`
+
+Mapping of the 256 XTerm color codes to their HEX
+represenatations.
