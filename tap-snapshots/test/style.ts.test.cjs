@@ -94,8 +94,7 @@ exports[`test/style.ts > TAP > styling from ansi code > 000 1`] = `
   "italic": false,
   "overline": false,
   "strike": false,
-  "underline": false,
-  "href": ""
+  "underline": false
 }
 RESET
 ]8;;\\[0mexample[m

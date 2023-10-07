@@ -1,4 +1,14 @@
-export const names = {
+export type Names =
+  | 'black'
+  | 'red'
+  | 'green'
+  | 'yellow'
+  | 'blue'
+  | 'magenta'
+  | 'cyan'
+  | 'white'
+
+export const names: { [name in Names]: number } = {
   black: 0b000,
   red: 0b001,
   green: 0b010,
@@ -18,7 +28,7 @@ export const namedCodes = [
   '#e000e0',
   '#00b0b0',
   '#e0e0e0',
-]
+] as const
 
 export const namedBright = [
   '#404040',
@@ -29,4 +39,4 @@ export const namedBright = [
   '#ff33ff',
   '#00ffff',
   '#ffffff',
-]
+] as const

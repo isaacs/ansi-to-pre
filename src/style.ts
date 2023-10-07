@@ -4,7 +4,7 @@
 import { DEFAULT_BG, DEFAULT_FG } from './default-colors.js'
 import { dimColor } from './dim-color.js'
 import { hexToRgb } from './hex-to-rgb.js'
-import {htmlEscape} from './html-escape.js'
+import { htmlEscape } from './html-escape.js'
 import { namedBright, namedCodes, names } from './named.js'
 import { rgbToHex } from './rgb-to-hex.js'
 import { xtermCodes } from './xterm.js'
@@ -65,8 +65,10 @@ type ParsedValidCode =
  * The properties that can be set on Style objects
  */
 export type StyleProps = {
+  /** may be either a hex string, or a named color */
   background?: string
   bold?: boolean
+  /** may be either a hex string, or a named color */
   color?: string
   dim?: boolean
   inverse?: boolean
@@ -74,10 +76,11 @@ export type StyleProps = {
   overline?: boolean
   strike?: boolean
   underline?: boolean
+  /** hyperlink target, must be a valid url or `''` */
   href?: string
 }
 
-const RESET_PROPS: StyleProps = {
+const RESET_STYLE: StyleProps = {
   background: '',
   bold: false,
   color: '',
@@ -87,6 +90,9 @@ const RESET_PROPS: StyleProps = {
   overline: false,
   strike: false,
   underline: false,
+}
+const RESET_PROPS: StyleProps = {
+  ...RESET_STYLE,
   href: '',
 }
 
@@ -195,7 +201,7 @@ export class Style {
     return this === RESET
   }
 
-  /** corresponding `\x1b[...m` ANSI code */
+  /** corresponding ANSI code sequence for this style */
   get ansi() {
     return this.#ansi
   }
@@ -232,6 +238,11 @@ export class Style {
     return `\x1b]8;;${href}\x1b\\\x1b[${codes.join(';')}m`
   }
 
+  /**
+   * If the input string is a sequence of *only* ANSI style and
+   * OSC href codes, returns the array of codes and their parameters.
+   * Otherwise, returns false.
+   */
   static validStyleCodes(s: string): null | [string, string][] {
     let c = 0
     let m: ParsedValidCode
@@ -270,7 +281,7 @@ export class Style {
         switch (c) {
           case '':
           case ALL_END:
-            Object.assign(style, RESET_PROPS)
+            Object.assign(style, RESET_STYLE)
             continue
           case BOLD_END:
             style.bold = false
@@ -388,9 +399,9 @@ export class Style {
   /**
    * Return a new Style with this one plus the updated properties.
    *
-   * If a string is provided, must be a valid `\x1b[...m` ANSI style code,
-   * though unrecognized properties within that code will be ignored rather
-   * than throwing an error.
+   * If a string is provided, must be a valid set of style and OSC hyperlink
+   * ANSI code, though unrecognized parameters within that code will be ignored
+   * rather than throwing an error.
    */
   update(properties: StyleProps | string): Style {
     const {
@@ -407,6 +418,7 @@ export class Style {
     } = typeof properties === 'string'
       ? Style.ansiProperties(properties)
       : properties
+
     return background === this.#background &&
       bold === this.#bold &&
       color === this.#color &&
@@ -442,6 +454,9 @@ export class Style {
     } }`
   }
 
+  /**
+   * Wrap the input string in the appropriate HTML for this style
+   */
   wrap(s: string) {
     const css = this.toString()
     const href = this.#href
@@ -452,6 +467,9 @@ export class Style {
     }>${htmlEscape(s)}</${tag}>`
   }
 
+  /**
+   * Return just the CSS for the styles. Href is not relevant.
+   */
   toString() {
     if (this.#css) return this.#css
     let color = this.#inverse ? this.#background : this.#color

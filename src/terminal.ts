@@ -200,7 +200,9 @@ export class Terminal {
     for (i = 0; i < this.#cursor[0]; i++) {
       const line = this.#text[i]
       const sline = this.#style[i]
+      /* c8 ignore start */
       if (!line || !sline) continue
+      /* c8 ignore stop */
       line.length = 0
       sline.length = 0
     }
@@ -236,8 +238,10 @@ export class Terminal {
    */
   eraseLineFromStart(): Terminal {
     if (this.#cursor[1] === 0) return this.eraseLine()
+    /* c8 ignore start */
     const line = this.#text[this.#cursor[0]]
     const sline = this.#style[this.#cursor[0]]
+    /* c8 ignore stop */
     if (!line || !sline) return this
     for (let i = 0; i < this.#cursor[1]; i++) {
       line[i] = ' '
@@ -255,25 +259,24 @@ export class Terminal {
     // remove title-setting sequences
     for (let c = 0; c < input.length; ) {
       while (input.charAt(c) === '\x1b') {
-        if (input.charAt(c + 1) === 'B') {
-          c += 2
-          this.horizontalPosition(1)
-          continue
-        }
-
-        if (input.charAt(c + 1) === 'H') {
-          // sets tab stops, but these aren't supported presently, so ignore
-          c += 2
-          continue
-        }
-
-        if (input.charAt(c + 1) === 'D') {
-          this.scrollDown(1)
-          continue
-        }
-        if (input.charAt(c + 1) === 'M') {
-          this.scrollUp(1)
-          continue
+        // codes that don't use the OSC or CSI code
+        switch (input.charAt(c + 1)) {
+          case 'B':
+            this.horizontalPosition(1)
+            c += 2
+            continue
+          case 'H':
+            // tab stops, not supported, ignore
+            c += 2
+            continue
+          case 'D':
+            this.scrollDown(1)
+            c += 2
+            continue
+          case 'M':
+            this.scrollUp(1)
+            c += 2
+            continue
         }
 
         // cursor/screen motion/erase commands
@@ -424,9 +427,20 @@ export class Terminal {
     return this
   }
 
+  /**
+   * Called when an OSC code of `\x1b]0;...\x1b\` is encountered.
+   *
+   * Sets the `title` attribute on the root `<pre>` in html output,
+   * and creates a corresponding OSC title sequence in the ansi output.
+   */
   setTitle(s: string) {
     this.#title = s
     return this
+  }
+
+  /** the raw unstyled text of each line */
+  get text() {
+    return this.#text.map(l => l.join(''))
   }
 
   [Symbol.for('nodejs.util.inspect.custom')](
@@ -473,11 +487,16 @@ export class Terminal {
     let cur: Block = new Block('')
     const blocks: Block[] = [cur]
     for (let i = 0; i < this.#text.length; i++) {
+      /* c8 ignore start */
       const line = this.#text[i] || []
       const sline = this.#style[i] || []
+      /* c8 ignore stop */
       for (let j = 0; j < line.length; j++) {
         const st = sline[j]
+        // will always be set
+        /* c8 ignore start */
         const ch = line[j] || ''
+        /* c8 ignore stop */
         if (st === cur.style) cur.write(ch)
         else blocks.push((cur = new Block(ch, st)))
       }

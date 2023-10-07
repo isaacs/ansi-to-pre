@@ -1,5 +1,7 @@
 export * from './block.js'
 export * from './default-colors.js'
+export * from './named.js'
+export * from './xterm.js'
 export * from './style.js'
 export * from './terminal.js'
 import { Terminal } from './terminal.js'

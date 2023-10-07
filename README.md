@@ -59,6 +59,16 @@ The enclosing `<pre>` tag has `background:#222222` and
 If you would like this to be configurable, send a PR, or maybe
 just [ask nicely](https://github.com/sponsors/isaacs).
 
+## Hyperlinks
+
+If there's a hyperlink in the ANSI string, using the OSC code
+`\x1b]8;;<url>\x1b\`, then it will be turned into an `<a>` tag in
+the HTML output.
+
+You can also use `terminal.setStyle({ href: '...' })` to write
+everything from that point forward as a hyperlink, and call
+`.setStyle({ href: '' })` to stop writing in hyperlink mode.
+
 ## Why?
 
 I needed a way to put the output from [tap](https://node-tap.org)
@@ -176,7 +186,8 @@ character and style buffers appropriately.
 
 Set the style that the terminal will use for text writes.
 
-If a string, must be a valid `\x1b[...m` ANSI style code.
+If a string, must be a valid `\x1b[...m` and/or
+`\x1b]8;;<url>\x1b\` ANSI code.
 
 The styles provided will be appended onto the current style in
 use, just as they would be by a real terminal if the relevant

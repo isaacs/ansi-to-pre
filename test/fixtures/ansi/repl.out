@@ -10,7 +10,7 @@ Type ".help" for more information.
 ]8;;\[0m> t = new Terminal().setStyle({ href: 'https://izs.me' }).setStyle({ color: 'blue', underline: true })
 Terminal {
   cursor: [ ]8;;\[0;38;2;224;224;0m0]8;;\[0m, ]8;;\[0;38;2;224;224;0m0]8;;\[0m ],
-  brush: Style { ]8;;\[0;38;2;0;64;224;4m^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m]8;;\[0m },
+  brush: Style { ]8;;https://izs.me/\[0;38;2;0;64;224;4m^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m]8;;\[0m },
   text: [],
   blocks: []
 }
@@ -20,7 +20,7 @@ Terminal {
   brush: Style { ^[]8;;^[\^[[0m },
   text: [ ]8;;\[0;38;2;0;160;0m'my webpage']8;;\[0m ],
   blocks: [
-    Block { Style { ]8;;\[0;38;2;0;64;224;4m^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m]8;;\[0m } ]8;;\[0;38;2;0;160;0m'my webpage']8;;\[0m }
+    Block { Style { ]8;;https://izs.me/\[0;38;2;0;64;224;4m^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m]8;;\[0m } ]8;;\[0;38;2;0;160;0m'my webpage']8;;\[0m }
   ]
 }
 > t.write(' is a place where I write things of ')
@@ -29,7 +29,7 @@ Terminal {
   brush: Style { ^[]8;;^[\^[[0m },
   text: [ ]8;;\[0;38;2;0;160;0m'my webpage is a place where I write things of ']8;;\[0m ],
   blocks: [
-    Block { Style { ]8;;\[0;38;2;0;64;224;4m^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m]8;;\[0m } ]8;;\[0;38;2;0;160;0m'my webpage']8;;\[0m },
+    Block { Style { ]8;;https://izs.me/\[0;38;2;0;64;224;4m^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m]8;;\[0m } ]8;;\[0;38;2;0;160;0m'my webpage']8;;\[0m },
     Block { ]8;;\[0;38;2;0;160;0m' is a place where I write things of ']8;;\[0m }
   ]
 }
@@ -39,7 +39,7 @@ Terminal {
   brush: Style { ]8;;\[0;7m^[]8;;^[\^[[0;7m]8;;\[0m },
   text: [ ]8;;\[0;38;2;0;160;0m'my webpage is a place where I write things of multiple']8;;\[0m ],
   blocks: [
-    Block { Style { ]8;;\[0;38;2;0;64;224;4m^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m]8;;\[0m } ]8;;\[0;38;2;0;160;0m'my webpage']8;;\[0m },
+    Block { Style { ]8;;https://izs.me/\[0;38;2;0;64;224;4m^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m]8;;\[0m } ]8;;\[0;38;2;0;160;0m'my webpage']8;;\[0m },
     Block { ]8;;\[0;38;2;0;160;0m' is a place where I write things of ']8;;\[0m },
     Block { Style { ]8;;\[0;7m^[]8;;^[\^[[0;7m]8;;\[0m } ]8;;\[0;38;2;0;160;0m'multiple']8;;\[0m }
   ]
@@ -50,7 +50,7 @@ Terminal {
   brush: Style { ]8;;\[0;38;2;255;48;48m^[]8;;^[\^[[0;38;2;255;48;48m]8;;\[0m },
   text: [ ]8;;\[0;38;2;0;160;0m'my webpage is a place where I write things of multiple styles']8;;\[0m ],
   blocks: [
-    Block { Style { ]8;;\[0;38;2;0;64;224;4m^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m]8;;\[0m } ]8;;\[0;38;2;0;160;0m'my webpage']8;;\[0m },
+    Block { Style { ]8;;https://izs.me/\[0;38;2;0;64;224;4m^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m]8;;\[0m } ]8;;\[0;38;2;0;160;0m'my webpage']8;;\[0m },
     Block { ]8;;\[0;38;2;0;160;0m' is a place where I write things of ']8;;\[0m },
     Block { Style { ]8;;\[0;7m^[]8;;^[\^[[0;7m]8;;\[0m } ]8;;\[0;38;2;0;160;0m'multiple']8;;\[0m },
     Block { Style { ]8;;\[0;38;2;255;48;48m^[]8;;^[\^[[0;38;2;255;48;48m]8;;\[0m } ]8;;\[0;38;2;0;160;0m' styles']8;;\[0m }
@@ -62,7 +62,7 @@ Terminal {
   brush: Style { ^[]8;;^[\^[[0m },
   text: [ ]8;;\[0;38;2;0;160;0m'my webpage is a place where I write things of multiple styles!']8;;\[0m ],
   blocks: [
-    Block { Style { ]8;;\[0;38;2;0;64;224;4m^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m]8;;\[0m } ]8;;\[0;38;2;0;160;0m'my webpage']8;;\[0m },
+    Block { Style { ]8;;https://izs.me/\[0;38;2;0;64;224;4m^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m]8;;\[0m } ]8;;\[0;38;2;0;160;0m'my webpage']8;;\[0m },
     Block { ]8;;\[0;38;2;0;160;0m' is a place where I write things of ']8;;\[0m },
     Block { Style { ]8;;\[0;7m^[]8;;^[\^[[0;7m]8;;\[0m } ]8;;\[0;38;2;0;160;0m'multiple']8;;\[0m },
     Block { Style { ]8;;\[0;38;2;255;48;48m^[]8;;^[\^[[0;38;2;255;48;48m]8;;\[0m } ]8;;\[0;38;2;0;160;0m' styles']8;;\[0m },
@@ -72,7 +72,7 @@ Terminal {
 > String(t)
 ]8;;\[0;38;2;0;160;0m'<pre style="color:#eeeeee;background:#222222;position:relative"><a href="https://izs.me/" style="text-decoration:underline;color:#0040e0">my webpage</a> is a place where I write things of <span style="color:#222222;background:#eeeeee">multiple</span><span style="color:#ff3030"> styles</span>!</pre>'
 ]8;;\[0m> console.log(t.ansi)
-]8;;\[0;38;2;0;64;224;4mmy webpage]8;;\[0m is a place where I write things of ]8;;\[0;7mmultiple]8;;\[0;38;2;255;48;48m styles]8;;\[0m!
+]8;;https://izs.me/\[0;38;2;0;64;224;4mmy webpage]8;;\[0m is a place where I write things of ]8;;\[0;7mmultiple]8;;\[0;38;2;255;48;48m styles]8;;\[0m!
 ]8;;\[0;38;2;64;64;64mundefined
 ]8;;\[0m> 
 

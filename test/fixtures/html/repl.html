@@ -26,7 +26,7 @@ Type ".help" for more information.
 </span>> t = new Terminal().setStyle({ href: 'https://izs.me' }).setStyle({ color: 'blue', underline: true })
 Terminal {
   cursor: [ <span style="color:#e0e000">0</span>, <span style="color:#e0e000">0</span> ],
-  brush: Style { <span style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m</span> },
+  brush: Style { <a href="https://izs.me/" style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m</a> },
   text: [],
   blocks: []
 }
@@ -36,7 +36,7 @@ Terminal {
   brush: Style { ^[]8;;^[\^[[0m },
   text: [ <span style="color:#00a000">'my webpage'</span> ],
   blocks: [
-    Block { Style { <span style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m</span> } <span style="color:#00a000">'my webpage'</span> }
+    Block { Style { <a href="https://izs.me/" style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m</a> } <span style="color:#00a000">'my webpage'</span> }
   ]
 }
 > t.write(' is a place where I write things of ')
@@ -45,7 +45,7 @@ Terminal {
   brush: Style { ^[]8;;^[\^[[0m },
   text: [ <span style="color:#00a000">'my webpage is a place where I write things of '</span> ],
   blocks: [
-    Block { Style { <span style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m</span> } <span style="color:#00a000">'my webpage'</span> },
+    Block { Style { <a href="https://izs.me/" style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m</a> } <span style="color:#00a000">'my webpage'</span> },
     Block { <span style="color:#00a000">' is a place where I write things of '</span> }
   ]
 }
@@ -55,7 +55,7 @@ Terminal {
   brush: Style { <span style="color:#222222;background:#eeeeee">^[]8;;^[\^[[0;7m</span> },
   text: [ <span style="color:#00a000">'my webpage is a place where I write things of multiple'</span> ],
   blocks: [
-    Block { Style { <span style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m</span> } <span style="color:#00a000">'my webpage'</span> },
+    Block { Style { <a href="https://izs.me/" style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m</a> } <span style="color:#00a000">'my webpage'</span> },
     Block { <span style="color:#00a000">' is a place where I write things of '</span> },
     Block { Style { <span style="color:#222222;background:#eeeeee">^[]8;;^[\^[[0;7m</span> } <span style="color:#00a000">'multiple'</span> }
   ]
@@ -66,7 +66,7 @@ Terminal {
   brush: Style { <span style="color:#ff3030">^[]8;;^[\^[[0;38;2;255;48;48m</span> },
   text: [ <span style="color:#00a000">'my webpage is a place where I write things of multiple styles'</span> ],
   blocks: [
-    Block { Style { <span style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m</span> } <span style="color:#00a000">'my webpage'</span> },
+    Block { Style { <a href="https://izs.me/" style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m</a> } <span style="color:#00a000">'my webpage'</span> },
     Block { <span style="color:#00a000">' is a place where I write things of '</span> },
     Block { Style { <span style="color:#222222;background:#eeeeee">^[]8;;^[\^[[0;7m</span> } <span style="color:#00a000">'multiple'</span> },
     Block { Style { <span style="color:#ff3030">^[]8;;^[\^[[0;38;2;255;48;48m</span> } <span style="color:#00a000">' styles'</span> }
@@ -78,7 +78,7 @@ Terminal {
   brush: Style { ^[]8;;^[\^[[0m },
   text: [ <span style="color:#00a000">'my webpage is a place where I write things of multiple styles!'</span> ],
   blocks: [
-    Block { Style { <span style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m</span> } <span style="color:#00a000">'my webpage'</span> },
+    Block { Style { <a href="https://izs.me/" style="text-decoration:underline;color:#0040e0">^[]8;;https://izs.me/^[\^[[0;38;2;0;64;224;4m</a> } <span style="color:#00a000">'my webpage'</span> },
     Block { <span style="color:#00a000">' is a place where I write things of '</span> },
     Block { Style { <span style="color:#222222;background:#eeeeee">^[]8;;^[\^[[0;7m</span> } <span style="color:#00a000">'multiple'</span> },
     Block { Style { <span style="color:#ff3030">^[]8;;^[\^[[0;38;2;255;48;48m</span> } <span style="color:#00a000">' styles'</span> },
@@ -88,7 +88,7 @@ Terminal {
 > String(t)
 <span style="color:#00a000">'&lt;pre style=&quot;color:#eeeeee;background:#222222;position:relative&quot;&gt;&lt;a href=&quot;https://izs.me/&quot; style=&quot;text-decoration:underline;color:#0040e0&quot;&gt;my webpage&lt;/a&gt; is a place where I write things of &lt;span style=&quot;color:#222222;background:#eeeeee&quot;&gt;multiple&lt;/span&gt;&lt;span style=&quot;color:#ff3030&quot;&gt; styles&lt;/span&gt;!&lt;/pre&gt;'
 </span>> console.log(t.ansi)
-<span style="text-decoration:underline;color:#0040e0">my webpage</span> is a place where I write things of <span style="color:#222222;background:#eeeeee">multiple</span><span style="color:#ff3030"> styles</span>!
+<a href="https://izs.me/" style="text-decoration:underline;color:#0040e0">my webpage</a> is a place where I write things of <span style="color:#222222;background:#eeeeee">multiple</span><span style="color:#ff3030"> styles</span>!
 <span style="color:#404040">undefined
 </span>> 
 
