@@ -1,2 +1,12 @@
-export const DEFAULT_FG = '#eeeeee'
-export const DEFAULT_BG = '#222222'
+let COLOR = '#eeeeee'
+let BACKGROUND = '#222222'
+
+export const defaultColor = (s?: string) => {
+  if (s) COLOR = s
+  return COLOR
+}
+
+export const defaultBackground = (s?: string) => {
+  if (s) BACKGROUND = s
+  return BACKGROUND
+}

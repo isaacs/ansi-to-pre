@@ -7,7 +7,7 @@
 'use strict'
 exports[`test/named.ts > TAP > must match snapshot 1`] = `
 Object {
-  "namedBright": Array [
+  "namedBrightColors": Array [
     "#404040",
     "#ff3030",
     "#00ff00",
@@ -17,7 +17,7 @@ Object {
     "#00ffff",
     "#ffffff",
   ],
-  "namedCodes": Array [
+  "namedColors": Array [
     "#000000",
     "#ff0000",
     "#00a000",

@@ -51,13 +51,13 @@ with enough space to be shown fully. Occasionally, for narrower
 emojis, this can result in some extra space, but that's usually
 better than cutting them off or overlapping other characters.
 
-## Default `<pre>` Styling
+## Default Styling
 
-The enclosing `<pre>` tag has `background:#222222` and
-`color:#eeeeee`.
+By default, there are colors assigned to the root `pre` tag and
+the 16 basic ANSI colors, for a relatively basic dark theme.
 
-If you would like this to be configurable, send a PR, or maybe
-just [ask nicely](https://github.com/sponsors/isaacs).
+To change the default colors or the theme, see the `theme()`
+method (and others) described below.
 
 ## Hyperlinks
 
@@ -104,12 +104,12 @@ import {
   Style,
 
   // other goodies
-  DEFAULT_BG,
-  DEFAULT_FG,
-  names,
-  namedCodes,
-  namedBright,
-  xtermCodes,
+  defaultColor,
+  defaultBackground,
+  nameCodes,
+  namedColors,
+  namedBrightColors,
+  xtermCode,
 } from 'ansi-to-pre'
 ```
 
@@ -347,30 +347,94 @@ True if this style is a full reset of all properties.
 
 A `\x1b[...m` ANSI code corresponding to this style.
 
-### `DEFAULT_BG: string`, `DEFAULT_FG: string`
+### `defaultBackground(s?: string): string`, `defaultColor(s?: string): string`
 
 The hex codes set on the `<pre>` for `background` and `color`,
 and used as the "unstyled" colors.
+
+Call with a string to change the color used.
 
 ### type `Names`
 
 Canonical names for the 8 standard colors.
 
-### `names: { [name in Names]: number }`
+### type `Theme`
 
-Mapping of the named colors to their ANSI bitwise `grb` color codes.
+```ts
+export type Theme = {
+  defaultColor?: string
+  defaultBackground?: string
+  named?: { [name in Names]?: string }
+  bright?: { [name in Names]?: string }
+}
+```
 
-### `namedCodes: string[]`
+A representation of the theme used for the default color and
+background, 8 standard colors, and 8 bright variants.
+
+### `theme: (t?: Theme): Theme`
+
+Call to get or set the color theme for the default color and
+background, 8 standard colors, and 8 bright variants.
+
+Returns the theme in use.
+
+For example:
+
+```js
+import { theme } from 'ansi-to-pre'
+
+// solarized dark with full-saturation brights
+theme({
+  defaultColor: '#000000',
+  defaultBackground: '#eee8d5',
+  // https://en.wikipedia.org/wiki/Solarized#Colors
+  named: {
+    black: '#002b36',
+    red: '#dc322f',
+    green: '#859900',
+    yellow: '#b58900',
+    blue: '#268bd2',
+    magenta: '#d33682',
+    cyan: '#2aa198',
+    white: '#fdf6e3',
+  },
+  bright: {
+    black: '#586e75',
+    red: '#ff0000',
+    green: '#00ff00',
+    yellow: '#ffff00',
+    blue: '#0000ff',
+    magenta: '#ff00ff',
+    cyan: '#00ffff',
+    white: '#ffffff',
+  },
+})
+```
+
+### `nameCodes: { [name in Names]: NameCodes }`
+
+Mapping of the named colors to their ANSI bitwise `grb` numeric
+color codes. For example, `nameCodes.black === 0`.
+
+### `codeNames: Names[]`
+
+A mapping of the codes 0-7 to their canonical names. For example,
+`codeNames[0] === 'black'`.
+
+### `namedColors: string[]`
 
 Mapping of the named color codes to their HEX color
-represenations.
+represenations. May be modified to change theme.
 
-### `namedBright: string[]`
+### `namedBrightColors: string[]`
 
 Mapping of named color codes to the HEX color represenataions of
-their bright variants.
+their bright variants. May be modified to change theme.
 
-### `xtermCodes: string[]`
+This array may be modified to change the color scheme.
 
-Mapping of the 256 XTerm color codes to their HEX
-represenatations.
+### `xtermCode: (n: number): string`
+
+Get the HEX code for an XTerm color code between 0 and 255. May
+be modified to change theme.

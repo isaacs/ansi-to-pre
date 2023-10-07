@@ -1,4 +1,4 @@
 import t from 'tap'
-import { namedBright, namedCodes } from '../src/named.js'
+import { namedBrightColors, namedColors } from '../src/named.js'
 
-t.matchSnapshot({ namedCodes, namedBright })
+t.matchSnapshot({ namedColors, namedBrightColors })

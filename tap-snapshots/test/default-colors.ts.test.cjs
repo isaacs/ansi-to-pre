@@ -5,9 +5,16 @@
  * Make sure to inspect the output below.  Do not ignore changes!
  */
 'use strict'
+exports[`test/default-colors.ts > TAP > after change 1`] = `
+Object {
+  "bg": "#ffffff",
+  "fg": "#000000",
+}
+`
+
 exports[`test/default-colors.ts > TAP > must match snapshot 1`] = `
 Object {
-  "DEFAULT_BG": "#222222",
-  "DEFAULT_FG": "#eeeeee",
+  "bg": "#222222",
+  "fg": "#eeeeee",
 }
 `

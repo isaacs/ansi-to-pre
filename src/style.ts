@@ -1,13 +1,19 @@
 // this object is deposited into the style buffer in the Terminal
 // every time a character is written to the character buffer.
 // Handles all parsing of \x1b[...m ANSI codes and conversion to CSS.
-import { DEFAULT_BG, DEFAULT_FG } from './default-colors.js'
+import { defaultBackground, defaultColor } from './default-colors.js'
 import { dimColor } from './dim-color.js'
 import { hexToRgb } from './hex-to-rgb.js'
 import { htmlEscape } from './html-escape.js'
-import { namedBright, namedCodes, names } from './named.js'
+import {
+  NameCodes,
+  nameCodes,
+  namedBrightColors,
+  namedColors,
+  Names,
+} from './named.js'
 import { rgbToHex } from './rgb-to-hex.js'
-import { xtermCodes } from './xterm.js'
+import { xtermCode } from './xterm.js'
 
 const ALL_END = '0'
 const BG_END = '49'
@@ -99,9 +105,9 @@ const RESET_PROPS: StyleProps = {
 const namedColor = (c: string, bright = false): string => {
   if (!c) return c
   c = c.toLowerCase()
-  const code = names[c as keyof typeof names]
+  const code = nameCodes[c as Names]
   if (typeof code === 'number') {
-    return (bright ? namedBright[code] : namedCodes[code]) as string
+    return (bright ? namedBrightColors[code] : namedColors[code]) as string
   }
   if (c.includes('bright') && !bright) {
     return namedColor(c.replace(/bright/g, ''), true)
@@ -338,7 +344,7 @@ export class Style {
             switch (next) {
               case '5':
                 const xt = codes[i + 2]
-                const code = xt && xtermCodes[parseInt(xt, 10)]
+                const code = xt && xtermCode(parseInt(xt, 10))
                 if (code) {
                   i += 2
                   style[prop] = code
@@ -374,19 +380,19 @@ export class Style {
               | null
               | (RegExpMatchArray & [string, string, string])
             if (!m) continue
-            const color = parseInt(m[2], 10)
+            const color = parseInt(m[2], 10) as NameCodes
             switch (m[1]) {
               case NAMED_FG:
-                style.color = namedCodes[color]
+                style.color = namedColors[color]
                 continue
               case NAMED_BG:
-                style.background = namedCodes[color]
+                style.background = namedColors[color]
                 continue
               case NAMED_FG_BRIGHT:
-                style.color = namedBright[color]
+                style.color = namedBrightColors[color]
                 continue
               case NAMED_BG_BRIGHT:
-                style.background = namedBright[color]
+                style.background = namedBrightColors[color]
                 continue
             }
           }
@@ -474,14 +480,14 @@ export class Style {
     if (this.#css) return this.#css
     let color = this.#inverse ? this.#background : this.#color
     let background = this.#inverse ? this.#color : this.#background
-    if (this.#inverse && !color && !background) {
-      color = DEFAULT_BG
-      background = DEFAULT_FG
+    if (this.#inverse) {
+      color ||= defaultBackground()
+      background ||= defaultColor()
     }
     // dim text is a different color, unless the background is the same
     // color, and set to something other than default. !?!? hwyyyyyyy idgi
     if (this.#dim && !(color && color === background)) {
-      color = dimColor(color || DEFAULT_FG)
+      color = dimColor(color || defaultColor())
     }
     const textDecoration = [
       ...(this.#underline ? ['underline'] : []),

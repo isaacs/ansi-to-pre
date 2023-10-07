@@ -1,3 +1,12 @@
 import t from 'tap'
-import { DEFAULT_BG, DEFAULT_FG } from '../src/default-colors.js'
-t.matchSnapshot({ DEFAULT_BG, DEFAULT_FG })
+import { defaultBackground, defaultColor } from '../src/default-colors.js'
+
+t.matchSnapshot({ bg: defaultBackground(), fg: defaultColor() })
+
+defaultBackground('#ffffff')
+defaultColor('#000000')
+
+t.matchSnapshot(
+  { bg: defaultBackground(), fg: defaultColor() },
+  'after change'
+)

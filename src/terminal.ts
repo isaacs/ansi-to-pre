@@ -1,6 +1,6 @@
 import { InspectOptions } from 'util'
 import { Block } from './block.js'
-import { DEFAULT_BG, DEFAULT_FG } from './default-colors.js'
+import { defaultBackground, defaultColor } from './default-colors.js'
 import { Style, StyleProps } from './style.js'
 const CODES_RE =
   /^\u001b\[([0-9]*[A-GJKSTg]|([0-9;]*)m|([0-9]*;?[0-9]*)?[Hf]|\?[0-9]+[hl])/
@@ -517,8 +517,8 @@ export class Terminal {
       return title + contents + '\x1b[m'
     }
     const css = Object.entries({
-      color: DEFAULT_FG,
-      background: DEFAULT_BG,
+      color: defaultColor(),
+      background: defaultBackground(),
       position: 'relative',
     })
       .map(kv => kv.join(':'))

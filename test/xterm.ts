@@ -1,12 +1,22 @@
 import t from 'tap'
 import { hexToRgb } from '../src/hex-to-rgb.js'
-import { namedBright, namedCodes } from '../src/named.js'
-import { xtermCodes } from '../src/xterm.js'
+import { namedBrightColors, namedColors } from '../src/named.js'
+import { xtermCode } from '../src/xterm.js'
 
-t.strictSame(xtermCodes.slice(0, 16), [...namedCodes, ...namedBright])
+const n = [
+  ...(namedColors as string[]),
+  ...(namedBrightColors as string[]),
+]
+for (let i = 0; i < 16; i++) {
+  t.equal(xtermCode(i), n[i])
+}
 
-for (const gray of xtermCodes.slice(231)) {
-  const [r, g, b] = hexToRgb(gray)
+t.equal(xtermCode(150), '#afd787')
+t.equal(xtermCode(999), undefined)
+t.equal(xtermCode(-1), undefined)
+
+for (let gray = 232; gray < 256; gray++) {
+  const [r, g, b] = hexToRgb(xtermCode(gray) as string)
   t.equal(r, g, 'grayscale, red and green equal')
   t.equal(r, b, 'grayscale, red and blue equal')
 }
