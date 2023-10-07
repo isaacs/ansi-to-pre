@@ -6,6 +6,9 @@
   "files": [
     "dist"
   ],
+  "bin": {
+    "ansi-to-pre": "dist/esm/bin.mjs"
+  },
   "tshy": {
     "main": true,
     "exports": {
@@ -86,5 +89,8 @@
     "parse"
   ],
   "license": "BlueOak-1.0.0",
-  "repository": "https://github.com/isaacs/ansi-to-pre"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isaacs/ansi-to-pre.git"
+  }
 }
