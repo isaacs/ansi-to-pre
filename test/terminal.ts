@@ -1,5 +1,5 @@
 import { readdirSync, readFileSync } from 'fs'
-import { resolve } from 'path'
+import { basename, resolve } from 'path'
 import t from 'tap'
 import { fileURLToPath } from 'url'
 import { inspect } from 'util'
@@ -13,7 +13,7 @@ const files = readdirSync(fixtures)
   .filter(f => f.endsWith('.out'))
   .map(f => resolve(fixtures, f))
 for (const file of files) {
-  t.test(file, async t => {
+  t.test(basename(file), async t => {
     const term = new Terminal(readFileSync(file, 'utf8'))
     t.matchSnapshot(term.ansi, 'ansi')
     t.matchSnapshot(String(term), 'html')
