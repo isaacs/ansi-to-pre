@@ -11,10 +11,11 @@
 
 import emojiRegex from 'emoji-regex'
 const EMOJI_RE = emojiRegex()
+const replaceWide = (c: string) => replaceNarrow(c) + ' '
+const replaceNarrow = (c: string) =>
+  `<span style="position:absolute;line-height:1;margin-top:0.3ex">${c}</span> `
 export const fixEmoji = (s: string): string => {
-  return s.replace(
-    EMOJI_RE,
-    c =>
-      `<span style="position:absolute;line-height:1;margin-top:0.3ex">${c}</span>  `
-  )
+  return s
+    .replace(/[\u2500-\u25FF]/g, replaceNarrow)
+    .replace(EMOJI_RE, replaceWide)
 }
