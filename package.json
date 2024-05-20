@@ -1,6 +1,6 @@
 {
   "name": "ansi-to-pre",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "convert string with ANSI color codes into a styled html pre tag",
   "author": "Isaac Z. Schlueter <i@izs.me> (https://izs.me)",
   "files": [
