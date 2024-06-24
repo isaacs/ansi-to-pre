@@ -58,32 +58,32 @@ t.test('erase line', t => {
   t.equal(
     new Terminal(`aaaaa\x1b[2D\x1b[2Kb`).ansi,
     RESET + '   b\x1b[m',
-    'erase line'
+    'erase line',
   )
   t.equal(
     new Terminal(`aaaaa\x1b[2D\x1b[1Kb`).ansi,
     RESET + '   ba\x1b[m',
-    'erase line from start'
+    'erase line from start',
   )
   t.equal(
     new Terminal(`aaaaa\r\naaaaa\x1bB\x1b[1Kb`).ansi,
     RESET + 'aaaaa\nb\x1b[m',
-    'erase line from start when start is column 0'
+    'erase line from start when start is column 0',
   )
   t.equal(
     new Terminal(`aaaaa\r\naaaaa\x1b[B\x1b[1K`).ansi,
     RESET + 'aaaaa\naaaaa\x1b[m',
-    'erase line from start when line not written, no-op'
+    'erase line from start when line not written, no-op',
   )
   t.equal(
     new Terminal(`aaaaa\x1b[2D\x1b[0Kb`).ansi,
     RESET + 'aaab\x1b[m',
-    'erase line to end'
+    'erase line to end',
   )
   t.equal(
     new Terminal(`aaaaa\x1b[2D\x1b[9Kb`).ansi,
     RESET + 'aaaba\x1b[m',
-    'unknown erase line param'
+    'unknown erase line param',
   )
   t.end()
 })
@@ -92,27 +92,27 @@ t.test('erase screen', t => {
   t.equal(
     new Terminal(`aaaaa\r\naaaaa\r\naaaaa\x1b[2;3H\x1b[3Jb`).ansi,
     RESET + '\n  b\x1b[m',
-    'erase screen and scrollback (so just screen)'
+    'erase screen and scrollback (so just screen)',
   )
   t.equal(
     new Terminal(`aaaaa\r\naaaaa\r\naaaaa\x1b[2;3H\x1b[2Jb`).ansi,
     RESET + '\n  b\x1b[m',
-    'erase screen'
+    'erase screen',
   )
   t.equal(
     new Terminal(`aaaaa\r\naaaaa\r\naaaaa\x1b[2;3H\x1b[1Jb`).ansi,
     RESET + '\n  baa\naaaaa\x1b[m',
-    'erase screen from start'
+    'erase screen from start',
   )
   t.equal(
     new Terminal(`aaaaa\r\naaaaa\r\naaaaa\x1b[2;3H\x1b[99Jb`).ansi,
     RESET + 'aaaaa\naabaa\naaaaa\x1b[m',
-    'erase screen unknown param'
+    'erase screen unknown param',
   )
   t.equal(
     new Terminal(`aaaaa\r\naaaaa\r\naaaaa\x1b[2;3H\x1b[0Jb`).ansi,
     RESET + 'aaaaa\naab\x1b[m',
-    'erase screen to end'
+    'erase screen to end',
   )
   t.end()
 })
@@ -121,12 +121,12 @@ t.test('prevLine, nextLine', t => {
   t.equal(
     new Terminal(`aaaaa\r\naaaaa\x1b[1;5H\x1b[Eb`).ansi,
     RESET + 'aaaaa\nbaaaa\x1b[m',
-    'nextLine'
+    'nextLine',
   )
   t.equal(
     new Terminal(`aaaaa\r\naaaaa\x1b[Fb`).ansi,
     RESET + 'baaaa\naaaaa\x1b[m',
-    'nextLine'
+    'nextLine',
   )
   t.end()
 })
@@ -135,12 +135,12 @@ t.test('up, down', t => {
   t.equal(
     new Terminal(`aaaaa\r\naaaaa\x1b[Ab`).ansi,
     RESET + 'aaaaab\naaaaa\x1b[m',
-    'up'
+    'up',
   )
   t.equal(
     new Terminal(`aaaaa\r\naaaaa\x1b[1;5H\x1b[Bb`).ansi,
     RESET + 'aaaaa\naaaab\x1b[m',
-    'down'
+    'down',
   )
   t.end()
 })
@@ -148,22 +148,22 @@ t.test('scrollUp, scrollDown', t => {
   t.equal(
     new Terminal(`aaaaa\r\naaaaa\x1b[2Tb`).ansi,
     RESET + '\n     b\naaaaa\naaaaa\x1b[m',
-    'scrollUp'
+    'scrollUp',
   )
   t.equal(
     new Terminal(`aaaaa\r\naaaaa\x1bM\x1bMb`).ansi,
     RESET + '\n     b\naaaaa\naaaaa\x1b[m',
-    'scrollUp with ^[M'
+    'scrollUp with ^[M',
   )
   t.equal(
     new Terminal(`aaaaa\r\naaaaa\x1b[2Sb`).ansi,
     RESET + '\n     b\x1b[m',
-    'scrollDown'
+    'scrollDown',
   )
   t.equal(
     new Terminal(`aaaaa\r\naaaaa\x1bD\x1bDb`).ansi,
     RESET + '\n     b\x1b[m',
-    'scrollDown with ^[D'
+    'scrollDown with ^[D',
   )
   t.end()
 })

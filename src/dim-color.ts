@@ -7,6 +7,6 @@ export const dimColor = (c: string): string =>
     hexToRgb(c).map(c => Math.floor(c * DIMLEVEL)) as [
       number,
       number,
-      number
-    ]
+      number,
+    ],
   )

@@ -85,7 +85,7 @@ ${s.ansi}example\x1b[m
 ${code}original\x1b[m
 ${acc.ansi}acc\x1b[m ${acc}
 `,
-        String(i).padStart(3, '0')
+        String(i).padStart(3, '0'),
       )
     }
     i++

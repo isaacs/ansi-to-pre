@@ -33,10 +33,10 @@ export const theme = (t?: Theme): Theme => {
     defaultColor: defaultColor(),
     defaultBackground: defaultBackground(),
     named: Object.fromEntries(
-      codeNames.map(n => [n, namedColors[nameCodes[n]]])
+      codeNames.map(n => [n, namedColors[nameCodes[n]]]),
     ),
     bright: Object.fromEntries(
-      codeNames.map(n => [n, namedBrightColors[nameCodes[n]]])
+      codeNames.map(n => [n, namedBrightColors[nameCodes[n]]]),
     ),
   }
 }

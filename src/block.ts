@@ -17,7 +17,7 @@ export class Block {
   [Symbol.for('nodejs.util.inspect.custom')](
     _: any,
     opts: InspectOptions,
-    inspect: typeof import('util').inspect
+    inspect: typeof import('util').inspect,
   ) {
     return `Block {${
       this.#style ? ' ' + inspect(this.#style, opts) : ''
@@ -35,11 +35,11 @@ export class Block {
   }
 
   #toString(ansi: boolean) {
-    return !this.#text
-      ? ''
-      : ansi
-      ? (this.#style ?? Style.RESET).ansi + this.#text
+    return (
+      !this.#text ? ''
+      : ansi ? (this.#style ?? Style.RESET).ansi + this.#text
       : fixEmoji((this.#style ?? Style.RESET).wrap(this.#text))
+    )
   }
 
   /** append text to the block */

@@ -23,10 +23,12 @@
     "./package.json": "./package.json",
     ".": {
       "import": {
+        "source": "./src/index.ts",
         "types": "./dist/esm/index.d.ts",
         "default": "./dist/esm/index.js"
       },
       "require": {
+        "source": "./src/index.ts",
         "types": "./dist/commonjs/index.d.ts",
         "default": "./dist/commonjs/index.js"
       }
@@ -41,10 +43,11 @@
     "preversion": "npm test",
     "postversion": "npm publish",
     "prepublishOnly": "git push origin --follow-tags",
-    "format": "prettier --write . --loglevel warn",
+    "format": "prettier --write . --log-level warn",
     "typedoc": "typedoc --tsconfig .tshy/esm.json ./src/*.ts"
   },
   "prettier": {
+    "experimentalTernaries": true,
     "semi": false,
     "printWidth": 75,
     "tabWidth": 2,
@@ -60,16 +63,16 @@
     "chalk": "^5.3.0",
     "is-fullwidth-code-point": "^4.0.0",
     "minipass": "^7.0.4",
-    "prettier": "^2.6.2",
-    "tap": "^18.4.2",
-    "tshy": "^1.2.2",
+    "prettier": "^3.3.2",
+    "tap": "^19.2.5",
+    "tshy": "^1.16.1",
     "tty-strings": "^1.2.0",
-    "typedoc": "^0.25.1",
-    "typescript": "^5.2.2"
+    "typedoc": "^0.26.2",
+    "typescript": "^5.5.2"
   },
   "dependencies": {
     "emoji-regex": "^10.2.1",
-    "jackspeak": "^2.3.6"
+    "jackspeak": "^3.4.0"
   },
   "tap": {
     "coverage-map": "map.js"

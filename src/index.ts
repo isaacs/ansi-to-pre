@@ -4,7 +4,7 @@ export * from './named.js'
 export * from './xterm.js'
 export * from './style.js'
 export * from './terminal.js'
-export * from  './theme.js'
+export * from './theme.js'
 import { Terminal } from './terminal.js'
 
 /**

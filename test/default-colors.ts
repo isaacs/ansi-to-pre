@@ -8,5 +8,5 @@ defaultColor('#000000')
 
 t.matchSnapshot(
   { bg: defaultBackground(), fg: defaultColor() },
-  'after change'
+  'after change',
 )

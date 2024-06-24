@@ -59,7 +59,7 @@ const VALID_CODE = () =>
       '\x1b\\[' + // style codes
       '([0-9]*(?:;[0-9]*)*)' + // code numbers
       'm', // end style codes
-    'g'
+    'g',
   )
 
 type ParsedValidCode =
@@ -230,9 +230,9 @@ export class Style {
       // always do a reset at the start
       0,
       ...(color ? [FG_START, 2, ...hexToRgb(namedColor(color))] : []),
-      ...(background
-        ? [BG_START, 2, ...hexToRgb(namedColor(background))]
-        : []),
+      ...(background ?
+        [BG_START, 2, ...hexToRgb(namedColor(background))]
+      : []),
       ...(bold ? [BOLD_START] : []),
       ...(dim ? [DIM_START] : []),
       ...(inverse ? [INV_START] : []),
@@ -421,21 +421,24 @@ export class Style {
       strike = this.#strike,
       underline = this.#underline,
       href = this.#href,
-    } = typeof properties === 'string'
-      ? Style.ansiProperties(properties)
+    } =
+      typeof properties === 'string' ?
+        Style.ansiProperties(properties)
       : properties
 
-    return background === this.#background &&
-      bold === this.#bold &&
-      color === this.#color &&
-      dim === this.#dim &&
-      inverse === this.#inverse &&
-      italic === this.#italic &&
-      overline === this.#overline &&
-      strike === this.#strike &&
-      underline === this.#underline &&
-      href === this.#href
-      ? this
+    return (
+        background === this.#background &&
+          bold === this.#bold &&
+          color === this.#color &&
+          dim === this.#dim &&
+          inverse === this.#inverse &&
+          italic === this.#italic &&
+          overline === this.#overline &&
+          strike === this.#strike &&
+          underline === this.#underline &&
+          href === this.#href
+      ) ?
+        this
       : new Style({
           background,
           bold,
@@ -452,7 +455,7 @@ export class Style {
 
   [Symbol.for('nodejs.util.inspect.custom')](
     _: any,
-    { colors }: { colors: boolean } = { colors: false }
+    { colors }: { colors: boolean } = { colors: false },
   ) {
     const { ansi } = this
     return `Style { ${colors ? ansi : ''}${ansi.replace(/\x1b/g, '^[')}${
@@ -497,11 +500,9 @@ export class Style {
 
     return (this.#css = [
       ...(textDecoration ? [`text-decoration:${textDecoration}`] : []),
-      ...(this.#bold
-        ? ['font-weight:bold']
-        : this.#dim
-        ? ['font-weight:100']
-        : []),
+      ...(this.#bold ? ['font-weight:bold']
+      : this.#dim ? ['font-weight:100']
+      : []),
       ...(this.#italic ? ['font-style:italic'] : []),
       ...(color ? [`color:${color}`] : []),
       ...(background ? [`background:${background}`] : []),

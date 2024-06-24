@@ -417,9 +417,8 @@ export class Terminal {
         sline.push(undefined)
       }
       line[this.#cursor[1]] = ch
-      sline[this.#cursor[1]] = this.#brush.isReset
-        ? undefined
-        : this.#brush
+      sline[this.#cursor[1]] =
+        this.#brush.isReset ? undefined : this.#brush
       this.#style[this.#cursor[0]] = sline
       this.#text[this.#cursor[0]] = line
       this.forward(1)
@@ -446,7 +445,7 @@ export class Terminal {
   [Symbol.for('nodejs.util.inspect.custom')](
     _: any,
     opts: InspectOptions,
-    inspect: typeof import('util').inspect
+    inspect: typeof import('util').inspect,
   ) {
     const ins = inspect(
       {
@@ -455,7 +454,7 @@ export class Terminal {
         text: this.#text.map(l => l.join('')),
         blocks: this.blocks,
       },
-      opts
+      opts,
     )
     return `Terminal ${ins}`
   }

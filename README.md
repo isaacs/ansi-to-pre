@@ -161,7 +161,7 @@ console.log(
     .write('hello, ')
     .down(1)
     .setStyle({ inverse: true })
-    .write('world!').ansi
+    .write('world!').ansi,
 )
 ```
 

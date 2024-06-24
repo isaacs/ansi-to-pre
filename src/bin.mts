@@ -26,7 +26,7 @@ const main = async () => {
         short: 'f',
         hint: 'pre|html',
         default: 'pre',
-        validate: (v: string) => v === 'pre' || v === 'ansi',
+        validate: (v: unknown) => v === 'pre' || v === 'ansi',
         description: `
         Set to 'ansi' to write a normalized ANSI stream.
         Set to 'pre' to putput a \`<pre>\` tag (default).'
@@ -84,15 +84,15 @@ const main = async () => {
 
   const chunks: Buffer[] = []
   inp.on('data', data =>
-    chunks.push(Buffer.isBuffer(data) ? data : Buffer.from(data))
+    chunks.push(Buffer.isBuffer(data) ? data : Buffer.from(data)),
   )
   inp.on('end', () => {
     const terminal = new Terminal(Buffer.concat(chunks).toString('utf8'))
     const data = format === 'ansi' ? terminal.ansi : terminal.toString()
     out.end(
-      template && tag
-        ? readFileSync(template, 'utf8').replace(tag, data)
-        : data
+      template && tag ?
+        readFileSync(template, 'utf8').replace(tag, data)
+      : data,
     )
   })
 }
