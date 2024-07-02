@@ -1,6 +1,6 @@
 import t from 'tap'
 const str =
-  '\x1b]8;;http://example.com\x1b\\This is a link\x1b]8;;\x1b\\ hello \x1b]8;;http://example.com\u0007Another link\x1b]8;;\u0007 \x1b]8;;invalid url\x1b\\invalid link\x1b]8;;\x1b\\ goodbye'
+  '\x1b]8;id:0;http://example.com\x1b\\This is a link\x1b]8;;\x1b\\ hello \x1b]8;;http://example.com\u0007Another link\x1b]8;;\u0007 \x1b]8;;invalid url\x1b\\invalid link\x1b]8;;\x1b\\ goodbye'
 
 import { hyperlink } from '../src/hyperlink.js'
 
