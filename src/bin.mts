@@ -83,7 +83,7 @@ const main = async () => {
   const inp = input === '-' ? process.stdin : createReadStream(input)
 
   const chunks: Buffer[] = []
-  inp.on('data', data =>
+  inp.on('data', (data: Buffer) =>
     chunks.push(Buffer.isBuffer(data) ? data : Buffer.from(data)),
   )
   inp.on('end', () => {

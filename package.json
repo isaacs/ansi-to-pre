@@ -23,12 +23,10 @@
     "./package.json": "./package.json",
     ".": {
       "import": {
-        "source": "./src/index.ts",
         "types": "./dist/esm/index.d.ts",
         "default": "./dist/esm/index.js"
       },
       "require": {
-        "source": "./src/index.ts",
         "types": "./dist/commonjs/index.d.ts",
         "default": "./dist/commonjs/index.js"
       }
@@ -64,11 +62,11 @@
     "is-fullwidth-code-point": "^4.0.0",
     "minipass": "^7.0.4",
     "prettier": "^3.3.2",
-    "tap": "^19.2.5",
-    "tshy": "^1.16.1",
+    "tap": "^21.0.1",
+    "tshy": "^3.0.2",
     "tty-strings": "^1.2.0",
-    "typedoc": "^0.26.2",
-    "typescript": "^5.5.2"
+    "typedoc": "^0.27.6",
+    "typescript": "^5.7.3"
   },
   "dependencies": {
     "emoji-regex": "^10.2.1",
@@ -95,5 +93,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/isaacs/ansi-to-pre.git"
-  }
+  },
+  "module": "./dist/esm/index.js"
 }
